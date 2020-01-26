@@ -36,6 +36,9 @@ public class VentanaHerramientas extends javax.swing.JPanel {
         botonTriangulo = new javax.swing.JButton();
         checkRelleno = new javax.swing.JCheckBox();
         botonLapiz = new javax.swing.JButton();
+        botonLinea = new javax.swing.JButton();
+        botonLineaMediana = new javax.swing.JButton();
+        botonLineaGruesa = new javax.swing.JButton();
 
         botonCuadrado.setText("Cuadrado");
         botonCuadrado.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +89,27 @@ public class VentanaHerramientas extends javax.swing.JPanel {
             }
         });
 
+        botonLinea.setText("Línea fina");
+        botonLinea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonLineaActionPerformed(evt);
+            }
+        });
+
+        botonLineaMediana.setText("Línea mediana");
+        botonLineaMediana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonLineaMedianaActionPerformed(evt);
+            }
+        });
+
+        botonLineaGruesa.setText("Línea Gruesa");
+        botonLineaGruesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonLineaGruesaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,7 +117,7 @@ public class VentanaHerramientas extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonPentagono, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                    .addComponent(botonPentagono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botonEstrella, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botonCirculo2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botonTriangulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -102,7 +126,10 @@ public class VentanaHerramientas extends javax.swing.JPanel {
                             .addComponent(checkRelleno)
                             .addComponent(botonCuadrado))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(botonLapiz, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(botonLinea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonLineaMediana, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonLineaGruesa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonLapiz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -121,8 +148,14 @@ public class VentanaHerramientas extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonTriangulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonLinea)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonLineaMediana)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonLineaGruesa)
+                .addGap(18, 18, 18)
                 .addComponent(botonLapiz)
-                .addGap(89, 89, 89))
+                .addGap(33, 33, 33))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -142,10 +175,6 @@ public class VentanaHerramientas extends javax.swing.JPanel {
         formaElegida = 1;
     }//GEN-LAST:event_botonCirculo2ActionPerformed
 
-    private void botonTrianguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTrianguloActionPerformed
-        formaElegida = 3;
-    }//GEN-LAST:event_botonTrianguloActionPerformed
-
     private void checkRellenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkRellenoActionPerformed
         relleno = checkRelleno.isSelected();
     }//GEN-LAST:event_checkRellenoActionPerformed
@@ -154,12 +183,31 @@ public class VentanaHerramientas extends javax.swing.JPanel {
         formaElegida = 0;
     }//GEN-LAST:event_botonLapizActionPerformed
 
+    private void botonTrianguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTrianguloActionPerformed
+        formaElegida = 3;
+    }//GEN-LAST:event_botonTrianguloActionPerformed
+
+    private void botonLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLineaActionPerformed
+        formaElegida = 11;
+    }//GEN-LAST:event_botonLineaActionPerformed
+
+    private void botonLineaMedianaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLineaMedianaActionPerformed
+        formaElegida = 12;
+    }//GEN-LAST:event_botonLineaMedianaActionPerformed
+
+    private void botonLineaGruesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLineaGruesaActionPerformed
+        formaElegida = 13;
+    }//GEN-LAST:event_botonLineaGruesaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCirculo2;
     private javax.swing.JButton botonCuadrado;
     private javax.swing.JButton botonEstrella;
     private javax.swing.JButton botonLapiz;
+    private javax.swing.JButton botonLinea;
+    private javax.swing.JButton botonLineaGruesa;
+    private javax.swing.JButton botonLineaMediana;
     private javax.swing.JButton botonPentagono;
     private javax.swing.JButton botonTriangulo;
     private javax.swing.JCheckBox checkRelleno;

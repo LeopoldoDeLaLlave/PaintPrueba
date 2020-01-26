@@ -47,6 +47,7 @@ public class Forma extends Polygon{
         for (int i=0; i< npoints; i++){
             xpoints[i] = (int) (x + _radio*Math.cos((2*Math.PI * i + _giro/40)/npoints));
             ypoints[i] = (int) (y + _radio*Math.sin((2*Math.PI * i + _giro/40)/npoints));
+            
         }
     }
 }

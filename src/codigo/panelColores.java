@@ -466,8 +466,7 @@ public class panelColores extends javax.swing.JPanel {
 
     private void colorNegroMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_colorNegroMousePressed
         JLabel s = (JLabel) evt.getSource();
-        colorSeleccionado = s.getBackground();
-        
+        colorSeleccionado = s.getBackground();        
         labelColorSeleccionado.setBackground(colorSeleccionado);
     }//GEN-LAST:event_colorNegroMousePressed
 

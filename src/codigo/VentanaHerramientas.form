@@ -19,7 +19,7 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="botonPentagono" pref="96" max="32767" attributes="0"/>
+                  <Component id="botonPentagono" max="32767" attributes="0"/>
                   <Component id="botonEstrella" max="32767" attributes="0"/>
                   <Component id="botonCirculo2" alignment="1" max="32767" attributes="0"/>
                   <Component id="botonTriangulo" alignment="1" max="32767" attributes="0"/>
@@ -30,7 +30,10 @@
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="botonLapiz" alignment="1" max="32767" attributes="0"/>
+                  <Component id="botonLinea" alignment="1" max="32767" attributes="0"/>
+                  <Component id="botonLineaMediana" alignment="1" max="32767" attributes="0"/>
+                  <Component id="botonLineaGruesa" alignment="1" max="32767" attributes="0"/>
+                  <Component id="botonLapiz" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -52,8 +55,14 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="botonTriangulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="botonLinea" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="botonLineaMediana" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="botonLineaGruesa" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="botonLapiz" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -113,6 +122,30 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonLapizActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonLinea">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="L&#xed;nea fina"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonLineaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonLineaMediana">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="L&#xed;nea mediana"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonLineaMedianaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonLineaGruesa">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="L&#xed;nea Gruesa"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonLineaGruesaActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
