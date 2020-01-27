@@ -12,7 +12,8 @@ package codigo;
 public class VentanaHerramientas extends javax.swing.JPanel {
 
     boolean relleno = false;//Indica si la forma está rellena o no
-    public int formaElegida;//indica la herramienta que usaremos
+    public int formaElegida=11;//indica la herramienta que usaremos, por defecto está el lápiz
+    boolean goma = false; //Nos indica si estamos usando la goma
     /**
      * Creates new form VentanaHerramientas
      */
@@ -39,6 +40,9 @@ public class VentanaHerramientas extends javax.swing.JPanel {
         botonLinea = new javax.swing.JButton();
         botonLineaMediana = new javax.swing.JButton();
         botonLineaGruesa = new javax.swing.JButton();
+        botonGomaMediana = new javax.swing.JButton();
+        botonGomaFina = new javax.swing.JButton();
+        botonGomaGruesa = new javax.swing.JButton();
 
         botonCuadrado.setText("Cuadrado");
         botonCuadrado.addActionListener(new java.awt.event.ActionListener() {
@@ -110,6 +114,27 @@ public class VentanaHerramientas extends javax.swing.JPanel {
             }
         });
 
+        botonGomaMediana.setText("Goma mediana");
+        botonGomaMediana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGomaMedianaActionPerformed(evt);
+            }
+        });
+
+        botonGomaFina.setText("Goma fina");
+        botonGomaFina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGomaFinaActionPerformed(evt);
+            }
+        });
+
+        botonGomaGruesa.setText("Goma gruesa");
+        botonGomaGruesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGomaGruesaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,13 +154,16 @@ public class VentanaHerramientas extends javax.swing.JPanel {
                     .addComponent(botonLinea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botonLineaMediana, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botonLineaGruesa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonLapiz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(botonLapiz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonGomaFina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addComponent(botonGomaMediana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(botonGomaGruesa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(checkRelleno)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonCirculo2)
@@ -153,9 +181,15 @@ public class VentanaHerramientas extends javax.swing.JPanel {
                 .addComponent(botonLineaMediana)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonLineaGruesa)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonLapiz)
-                .addGap(33, 33, 33))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonGomaFina)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonGomaMediana)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonGomaGruesa)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -189,21 +223,42 @@ public class VentanaHerramientas extends javax.swing.JPanel {
 
     private void botonLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLineaActionPerformed
         formaElegida = 11;
+        goma=false;
     }//GEN-LAST:event_botonLineaActionPerformed
 
     private void botonLineaMedianaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLineaMedianaActionPerformed
         formaElegida = 12;
+        goma=false;
     }//GEN-LAST:event_botonLineaMedianaActionPerformed
 
     private void botonLineaGruesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLineaGruesaActionPerformed
         formaElegida = 13;
+        goma=false;
     }//GEN-LAST:event_botonLineaGruesaActionPerformed
+
+    private void botonGomaMedianaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGomaMedianaActionPerformed
+        formaElegida = 12;
+        goma=true;
+    }//GEN-LAST:event_botonGomaMedianaActionPerformed
+
+    private void botonGomaFinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGomaFinaActionPerformed
+        formaElegida = 11;
+        goma=true;
+    }//GEN-LAST:event_botonGomaFinaActionPerformed
+
+    private void botonGomaGruesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGomaGruesaActionPerformed
+        formaElegida = 13;
+        goma=true;
+    }//GEN-LAST:event_botonGomaGruesaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCirculo2;
     private javax.swing.JButton botonCuadrado;
     private javax.swing.JButton botonEstrella;
+    private javax.swing.JButton botonGomaFina;
+    private javax.swing.JButton botonGomaGruesa;
+    private javax.swing.JButton botonGomaMediana;
     private javax.swing.JButton botonLapiz;
     private javax.swing.JButton botonLinea;
     private javax.swing.JButton botonLineaGruesa;

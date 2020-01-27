@@ -15,7 +15,9 @@ import javax.swing.JLabel;
 public class panelColores extends javax.swing.JPanel {
     
     
-    public Color colorSeleccionado = Color.black;
+    public Color colorSeleccionado = Color.black;//Color con el que se pinta
+    public Color colorSeleccionadoGoma = Color.white;//Color con el que se borra
+    public Color aux= Color.white;//Guardaremos el color cuando cambiemos el pintar por el borrar
 
     /**
      * Creates new form panelColores
@@ -318,9 +320,19 @@ public class panelColores extends javax.swing.JPanel {
 
         labelColorSeleccionado.setBackground(new java.awt.Color(0, 0, 0));
         labelColorSeleccionado.setOpaque(true);
+        labelColorSeleccionado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                labelColorSeleccionadoMouseReleased(evt);
+            }
+        });
 
         labelBorrarSeleccionado.setBackground(new java.awt.Color(255, 255, 255));
         labelBorrarSeleccionado.setOpaque(true);
+        labelBorrarSeleccionado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                labelBorrarSeleccionadoMouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -632,6 +644,42 @@ public class panelColores extends javax.swing.JPanel {
         colorSeleccionado = s.getBackground();
         labelColorSeleccionado.setBackground(colorSeleccionado);
     }//GEN-LAST:event_colorAzulSemiclaroMousePressed
+
+    private void labelBorrarSeleccionadoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelBorrarSeleccionadoMouseReleased
+
+        //Guardor el color de la etiqueta de borrado
+        aux = colorSeleccionadoGoma;
+        //Le pongo el color de la etiqueta pintar a la etiqueta goma
+        labelBorrarSeleccionado.setBackground(colorSeleccionado);
+        
+        //Le pongo el color de la etiqueta goma a la etiqueta pintar
+        labelColorSeleccionado.setBackground(aux);
+        
+        //Le pongo el color de pintar a la goma
+        colorSeleccionadoGoma = colorSeleccionado;
+        
+        //Le pongo el color de la goma a pintar
+        colorSeleccionado = aux;
+        
+       
+
+    }//GEN-LAST:event_labelBorrarSeleccionadoMouseReleased
+
+    private void labelColorSeleccionadoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelColorSeleccionadoMouseReleased
+        //Guardor el color de la etiqueta de borrado
+        aux = colorSeleccionadoGoma;
+        //Le pongo el color de la etiqueta pintar a la etiqueta goma
+        labelBorrarSeleccionado.setBackground(colorSeleccionado);
+        
+        //Le pongo el color de la etiqueta goma a la etiqueta pintar
+        labelColorSeleccionado.setBackground(aux);
+        
+        //Le pongo el color de pintar a la goma
+        colorSeleccionadoGoma = colorSeleccionado;
+        
+        //Le pongo el color de la goma a pintar
+        colorSeleccionado = aux;
+    }//GEN-LAST:event_labelColorSeleccionadoMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

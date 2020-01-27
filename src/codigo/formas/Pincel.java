@@ -35,5 +35,7 @@ public class Pincel extends Polygon{
         g2.drawLine(posX, posY, x, y);
         x = posX;
         y = posY;
+        //Para que vuelva el grosor normal al hacer las formas
+        g2.setStroke(new BasicStroke(0));
     }
 }
