@@ -31,9 +31,8 @@
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Component id="botonLinea" alignment="1" max="32767" attributes="0"/>
-                  <Component id="botonLineaMediana" alignment="1" max="32767" attributes="0"/>
+                  <Component id="botonLineaMediana" alignment="1" pref="115" max="32767" attributes="0"/>
                   <Component id="botonLineaGruesa" alignment="1" max="32767" attributes="0"/>
-                  <Component id="botonLapiz" alignment="0" max="32767" attributes="0"/>
                   <Component id="botonGomaFina" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -63,9 +62,7 @@
               <Component id="botonLineaMediana" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="botonLineaGruesa" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="botonLapiz" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Component id="botonGomaFina" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="botonGomaMediana" min="-2" max="-2" attributes="0"/>
@@ -123,14 +120,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkRellenoActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="botonLapiz">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Lapiz"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonLapizActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botonLinea">

@@ -36,7 +36,6 @@ public class VentanaHerramientas extends javax.swing.JPanel {
         botonCirculo2 = new javax.swing.JButton();
         botonTriangulo = new javax.swing.JButton();
         checkRelleno = new javax.swing.JCheckBox();
-        botonLapiz = new javax.swing.JButton();
         botonLinea = new javax.swing.JButton();
         botonLineaMediana = new javax.swing.JButton();
         botonLineaGruesa = new javax.swing.JButton();
@@ -83,13 +82,6 @@ public class VentanaHerramientas extends javax.swing.JPanel {
         checkRelleno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkRellenoActionPerformed(evt);
-            }
-        });
-
-        botonLapiz.setText("Lapiz");
-        botonLapiz.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonLapizActionPerformed(evt);
             }
         });
 
@@ -152,9 +144,8 @@ public class VentanaHerramientas extends javax.swing.JPanel {
                             .addComponent(botonCuadrado))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(botonLinea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonLineaMediana, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonLineaMediana, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
                     .addComponent(botonLineaGruesa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonLapiz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botonGomaFina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addComponent(botonGomaMediana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -181,9 +172,7 @@ public class VentanaHerramientas extends javax.swing.JPanel {
                 .addComponent(botonLineaMediana)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonLineaGruesa)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonLapiz)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botonGomaFina)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botonGomaMediana)
@@ -212,10 +201,6 @@ public class VentanaHerramientas extends javax.swing.JPanel {
     private void checkRellenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkRellenoActionPerformed
         relleno = checkRelleno.isSelected();
     }//GEN-LAST:event_checkRellenoActionPerformed
-
-    private void botonLapizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLapizActionPerformed
-        formaElegida = 0;
-    }//GEN-LAST:event_botonLapizActionPerformed
 
     private void botonTrianguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTrianguloActionPerformed
         formaElegida = 3;
@@ -259,7 +244,6 @@ public class VentanaHerramientas extends javax.swing.JPanel {
     private javax.swing.JButton botonGomaFina;
     private javax.swing.JButton botonGomaGruesa;
     private javax.swing.JButton botonGomaMediana;
-    private javax.swing.JButton botonLapiz;
     private javax.swing.JButton botonLinea;
     private javax.swing.JButton botonLineaGruesa;
     private javax.swing.JButton botonLineaMediana;
