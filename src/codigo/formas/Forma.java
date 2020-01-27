@@ -5,6 +5,7 @@
  */
 package codigo.formas;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
@@ -30,10 +31,10 @@ public class Forma extends Polygon{
         
     }
     
-    public void dibujate(Graphics2D g2, int _posX, int _posY){
+    public void dibujate(Graphics2D g2, int _posX, int _posY, int grosor){
         
         calculaVertices(y-_posY,x-_posX);
-        
+        g2.setStroke(new BasicStroke(grosor));
         g2.setColor(color);
         if(relleno){
             g2.fill(this);

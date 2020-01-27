@@ -14,6 +14,7 @@ public class VentanaHerramientas extends javax.swing.JPanel {
     boolean relleno = false;//Indica si la forma está rellena o no
     public int formaElegida=11;//indica la herramienta que usaremos, por defecto está el lápiz
     boolean goma = false; //Nos indica si estamos usando la goma
+    int grosorLinea = 1;
     /**
      * Creates new form VentanaHerramientas
      */
@@ -36,12 +37,9 @@ public class VentanaHerramientas extends javax.swing.JPanel {
         botonCirculo2 = new javax.swing.JButton();
         botonTriangulo = new javax.swing.JButton();
         checkRelleno = new javax.swing.JCheckBox();
-        botonLinea = new javax.swing.JButton();
-        botonLineaMediana = new javax.swing.JButton();
-        botonLineaGruesa = new javax.swing.JButton();
-        botonGomaMediana = new javax.swing.JButton();
+        botonPincel = new javax.swing.JButton();
         botonGomaFina = new javax.swing.JButton();
-        botonGomaGruesa = new javax.swing.JButton();
+        jSlider1 = new javax.swing.JSlider();
 
         botonCuadrado.setText("Cuadrado");
         botonCuadrado.addActionListener(new java.awt.event.ActionListener() {
@@ -85,45 +83,26 @@ public class VentanaHerramientas extends javax.swing.JPanel {
             }
         });
 
-        botonLinea.setText("Línea fina");
-        botonLinea.addActionListener(new java.awt.event.ActionListener() {
+        botonPincel.setText("Pincel");
+        botonPincel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonLineaActionPerformed(evt);
+                botonPincelActionPerformed(evt);
             }
         });
 
-        botonLineaMediana.setText("Línea mediana");
-        botonLineaMediana.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonLineaMedianaActionPerformed(evt);
-            }
-        });
-
-        botonLineaGruesa.setText("Línea Gruesa");
-        botonLineaGruesa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonLineaGruesaActionPerformed(evt);
-            }
-        });
-
-        botonGomaMediana.setText("Goma mediana");
-        botonGomaMediana.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonGomaMedianaActionPerformed(evt);
-            }
-        });
-
-        botonGomaFina.setText("Goma fina");
+        botonGomaFina.setText("Goma ");
         botonGomaFina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonGomaFinaActionPerformed(evt);
             }
         });
 
-        botonGomaGruesa.setText("Goma gruesa");
-        botonGomaGruesa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonGomaGruesaActionPerformed(evt);
+        jSlider1.setMaximum(15);
+        jSlider1.setMinimum(1);
+        jSlider1.setValue(1);
+        jSlider1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jSlider1MouseReleased(evt);
             }
         });
 
@@ -138,18 +117,15 @@ public class VentanaHerramientas extends javax.swing.JPanel {
                     .addComponent(botonEstrella, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botonCirculo2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botonTriangulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonPincel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonGomaFina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(checkRelleno)
-                            .addComponent(botonCuadrado))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(botonLinea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonLineaMediana, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                    .addComponent(botonLineaGruesa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonGomaFina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(botonCuadrado)
+                            .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addComponent(botonGomaMediana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(botonGomaGruesa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,18 +143,12 @@ public class VentanaHerramientas extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonTriangulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonLinea)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonLineaMediana)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonLineaGruesa)
+                .addComponent(botonPincel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botonGomaFina)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botonGomaMediana)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botonGomaGruesa)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(182, 182, 182)
+                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -206,35 +176,20 @@ public class VentanaHerramientas extends javax.swing.JPanel {
         formaElegida = 3;
     }//GEN-LAST:event_botonTrianguloActionPerformed
 
-    private void botonLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLineaActionPerformed
+    private void botonPincelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPincelActionPerformed
         formaElegida = 11;
         goma=false;
-    }//GEN-LAST:event_botonLineaActionPerformed
-
-    private void botonLineaMedianaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLineaMedianaActionPerformed
-        formaElegida = 12;
-        goma=false;
-    }//GEN-LAST:event_botonLineaMedianaActionPerformed
-
-    private void botonLineaGruesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLineaGruesaActionPerformed
-        formaElegida = 13;
-        goma=false;
-    }//GEN-LAST:event_botonLineaGruesaActionPerformed
-
-    private void botonGomaMedianaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGomaMedianaActionPerformed
-        formaElegida = 12;
-        goma=true;
-    }//GEN-LAST:event_botonGomaMedianaActionPerformed
+    }//GEN-LAST:event_botonPincelActionPerformed
 
     private void botonGomaFinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGomaFinaActionPerformed
         formaElegida = 11;
         goma=true;
     }//GEN-LAST:event_botonGomaFinaActionPerformed
 
-    private void botonGomaGruesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGomaGruesaActionPerformed
-        formaElegida = 13;
-        goma=true;
-    }//GEN-LAST:event_botonGomaGruesaActionPerformed
+    private void jSlider1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider1MouseReleased
+        grosorLinea = jSlider1.getValue();
+        System.out.println(grosorLinea);
+    }//GEN-LAST:event_jSlider1MouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -242,13 +197,10 @@ public class VentanaHerramientas extends javax.swing.JPanel {
     private javax.swing.JButton botonCuadrado;
     private javax.swing.JButton botonEstrella;
     private javax.swing.JButton botonGomaFina;
-    private javax.swing.JButton botonGomaGruesa;
-    private javax.swing.JButton botonGomaMediana;
-    private javax.swing.JButton botonLinea;
-    private javax.swing.JButton botonLineaGruesa;
-    private javax.swing.JButton botonLineaMediana;
     private javax.swing.JButton botonPentagono;
+    private javax.swing.JButton botonPincel;
     private javax.swing.JButton botonTriangulo;
     private javax.swing.JCheckBox checkRelleno;
+    private javax.swing.JSlider jSlider1;
     // End of variables declaration//GEN-END:variables
 }

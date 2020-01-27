@@ -23,22 +23,19 @@
                   <Component id="botonEstrella" max="32767" attributes="0"/>
                   <Component id="botonCirculo2" alignment="1" max="32767" attributes="0"/>
                   <Component id="botonTriangulo" alignment="1" max="32767" attributes="0"/>
+                  <Component id="botonPincel" alignment="1" max="32767" attributes="0"/>
+                  <Component id="botonGomaFina" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="checkRelleno" min="-2" max="-2" attributes="0"/>
                           <Component id="botonCuadrado" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jSlider1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="botonLinea" alignment="1" max="32767" attributes="0"/>
-                  <Component id="botonLineaMediana" alignment="1" pref="115" max="32767" attributes="0"/>
-                  <Component id="botonLineaGruesa" alignment="1" max="32767" attributes="0"/>
-                  <Component id="botonGomaFina" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Component id="botonGomaMediana" alignment="0" max="32767" attributes="0"/>
-          <Component id="botonGomaGruesa" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -57,18 +54,12 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="botonTriangulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="botonLinea" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="botonLineaMediana" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="botonLineaGruesa" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+              <Component id="botonPincel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="botonGomaFina" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="botonGomaMediana" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="botonGomaGruesa" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
+              <Component id="jSlider1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="29" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -122,52 +113,30 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkRellenoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="botonLinea">
+    <Component class="javax.swing.JButton" name="botonPincel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="L&#xed;nea fina"/>
+        <Property name="text" type="java.lang.String" value="Pincel"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonLineaActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="botonLineaMediana">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="L&#xed;nea mediana"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonLineaMedianaActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="botonLineaGruesa">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="L&#xed;nea Gruesa"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonLineaGruesaActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="botonGomaMediana">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Goma mediana"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonGomaMedianaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonPincelActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botonGomaFina">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Goma fina"/>
+        <Property name="text" type="java.lang.String" value="Goma "/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonGomaFinaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="botonGomaGruesa">
+    <Component class="javax.swing.JSlider" name="jSlider1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Goma gruesa"/>
+        <Property name="maximum" type="int" value="15"/>
+        <Property name="minimum" type="int" value="1"/>
+        <Property name="value" type="int" value="1"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonGomaGruesaActionPerformed"/>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jSlider1MouseReleased"/>
       </Events>
     </Component>
   </SubComponents>
