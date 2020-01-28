@@ -9,7 +9,6 @@ import codigo.formas.Circulo2;
 import codigo.formas.Cuadrado;
 import codigo.formas.Estrella;
 import codigo.formas.Forma;
-import java.awt.BasicStroke;
 import codigo.formas.Pentagono;
 import codigo.formas.Pincel;
 import codigo.formas.Spray;
@@ -19,6 +18,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -46,7 +49,7 @@ public class VentanaPaint extends javax.swing.JFrame {
     public VentanaPaint() {
         initComponents();
         inicializaBuffers();
-        jDialog2.setSize(640,450);
+        jDialog2.setSize(640, 450);
 
     }
 
@@ -91,11 +94,17 @@ public class VentanaPaint extends javax.swing.JFrame {
         jColorChooser1 = new javax.swing.JColorChooser();
         aceptarColor = new javax.swing.JButton();
         cancelarColor = new javax.swing.JButton();
+        jDialog1 = new javax.swing.JDialog();
+        jFileChooser1 = new javax.swing.JFileChooser();
         jPanel1 = new javax.swing.JPanel();
         panelColores = new codigo.panelColores();
         ventanaHerramientas1 = new codigo.VentanaHerramientas();
         jLabelCoordenadas = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         aceptarColor.setText("Aceptar");
         aceptarColor.addActionListener(new java.awt.event.ActionListener() {
@@ -139,6 +148,19 @@ public class VentanaPaint extends javax.swing.JFrame {
                 .addGap(23, 23, 23))
         );
 
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jFileChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 934, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addComponent(jFileChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 154, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
@@ -176,6 +198,23 @@ public class VentanaPaint extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jMenu1.setText("File");
+
+        jMenuItem1.setText("Guardar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -354,12 +393,29 @@ public class VentanaPaint extends javax.swing.JFrame {
     private void aceptarColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarColorActionPerformed
         jDialog2.setVisible(false);
         panelColores.colorSeleccionado = jColorChooser1.getColor();
-        panelColores.colorSeleccionado = jColorChooser1.getColor();
+        panelColores.labelColorSeleccionado.setBackground(jColorChooser1.getColor());
     }//GEN-LAST:event_aceptarColorActionPerformed
 
     private void cancelarColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarColorActionPerformed
         jDialog2.setVisible(false);
     }//GEN-LAST:event_cancelarColorActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        int seleccion = jFileChooser1.showSaveDialog(this);
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            //Si entra aqui es porque el usuario ha pulsado guardar
+            File fichero = jFileChooser1.getSelectedFile();
+            String nombre = fichero.getName();
+            String extension = nombre.substring(nombre.lastIndexOf('.') + 1, nombre.length());
+            if (extension.equalsIgnoreCase("jpg") || extension.equalsIgnoreCase("png")) {
+
+                try {
+                    ImageIO.write(buffer, "png", fichero);
+                } catch (IOException e) {
+                }
+            }
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -401,8 +457,14 @@ public class VentanaPaint extends javax.swing.JFrame {
     private javax.swing.JButton cancelarColor;
     private javax.swing.JButton jButton1;
     private javax.swing.JColorChooser jColorChooser1;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
+    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabelCoordenadas;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private codigo.panelColores panelColores;
     private codigo.VentanaHerramientas ventanaHerramientas1;

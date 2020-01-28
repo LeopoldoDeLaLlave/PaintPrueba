@@ -712,6 +712,6 @@ public class panelColores extends javax.swing.JPanel {
     private javax.swing.JLabel colorVerdePistacho;
     private javax.swing.JLabel colorVioleta;
     private javax.swing.JLabel labelBorrarSeleccionado;
-    private javax.swing.JLabel labelColorSeleccionado;
+    public javax.swing.JLabel labelColorSeleccionado;
     // End of variables declaration//GEN-END:variables
 }
