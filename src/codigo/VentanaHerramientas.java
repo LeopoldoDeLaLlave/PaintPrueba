@@ -40,6 +40,7 @@ public class VentanaHerramientas extends javax.swing.JPanel {
         botonPincel = new javax.swing.JButton();
         botonGomaFina = new javax.swing.JButton();
         jSlider1 = new javax.swing.JSlider();
+        botonTiraLineas = new javax.swing.JButton();
 
         botonCuadrado.setText("Cuadrado");
         botonCuadrado.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +107,13 @@ public class VentanaHerramientas extends javax.swing.JPanel {
             }
         });
 
+        botonTiraLineas.setText("TiraLíneas");
+        botonTiraLineas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonTiraLineasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,7 +132,8 @@ public class VentanaHerramientas extends javax.swing.JPanel {
                             .addComponent(checkRelleno)
                             .addComponent(botonCuadrado)
                             .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(botonTiraLineas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -146,9 +155,11 @@ public class VentanaHerramientas extends javax.swing.JPanel {
                 .addComponent(botonPincel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botonGomaFina)
-                .addGap(182, 182, 182)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonTiraLineas)
+                .addGap(158, 158, 158)
                 .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -191,6 +202,10 @@ public class VentanaHerramientas extends javax.swing.JPanel {
         System.out.println(grosorLinea);
     }//GEN-LAST:event_jSlider1MouseReleased
 
+    private void botonTiraLineasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTiraLineasActionPerformed
+        formaElegida = 0;
+    }//GEN-LAST:event_botonTiraLineasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCirculo2;
@@ -199,6 +214,7 @@ public class VentanaHerramientas extends javax.swing.JPanel {
     private javax.swing.JButton botonGomaFina;
     private javax.swing.JButton botonPentagono;
     private javax.swing.JButton botonPincel;
+    private javax.swing.JButton botonTiraLineas;
     private javax.swing.JButton botonTriangulo;
     private javax.swing.JCheckBox checkRelleno;
     private javax.swing.JSlider jSlider1;

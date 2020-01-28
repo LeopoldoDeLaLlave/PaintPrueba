@@ -12,6 +12,7 @@ import codigo.formas.Forma;
 import java.awt.BasicStroke;
 import codigo.formas.Pentagono;
 import codigo.formas.Pincel;
+import codigo.formas.TiraLineas;
 import codigo.formas.Triangulo;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -35,6 +36,7 @@ public class VentanaPaint extends javax.swing.JFrame {
     
     Forma miForma = null;
     Pincel miPincel = null;
+    TiraLineas miTiraLineas = null;
 
     /**
      * Creates new form VentanaPaint
@@ -172,7 +174,10 @@ public class VentanaPaint extends javax.swing.JFrame {
         
         switch (ventanaHerramientas1.formaElegida) {
 
-
+            //HAce una lina de un punto a otro
+            case 0:
+                miTiraLineas.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
+                break;
             //HAce un triángulo
             case 3:
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
@@ -209,7 +214,10 @@ public class VentanaPaint extends javax.swing.JFrame {
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
         switch (ventanaHerramientas1.formaElegida) {
             
-            
+            case 0:
+                miTiraLineas = new TiraLineas(evt.getX(), evt.getY(), panelColores.colorSeleccionado);
+                miTiraLineas.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
+                break;
             case 3:
                 miForma = new Triangulo(evt.getX(), evt.getY(), 4, panelColores.colorSeleccionado, ventanaHerramientas1.relleno);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
@@ -230,6 +238,7 @@ public class VentanaPaint extends javax.swing.JFrame {
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
                 break;
             
+                //Este caso sirve de pincel y de goma
             case 11:
                 if (ventanaHerramientas1.goma) {
                     miPincel = new Pincel(evt.getX(), evt.getY(), panelColores.colorSeleccionadoGoma);
@@ -249,8 +258,10 @@ public class VentanaPaint extends javax.swing.JFrame {
 
     private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
         
-        if ((ventanaHerramientas1.formaElegida >= 0 && ventanaHerramientas1.formaElegida <= 5) || ventanaHerramientas1.formaElegida == 256) {//Para que no dé error cuando no pintemos formas
+        if ((ventanaHerramientas1.formaElegida > 0 && ventanaHerramientas1.formaElegida <= 5) || ventanaHerramientas1.formaElegida == 256) {//Para que no dé error cuando no pintemos formas
             miForma.dibujate(bufferGraphics2, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
+        }else if(ventanaHerramientas1.formaElegida == 0){
+            miTiraLineas.dibujate(bufferGraphics2, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
         }
     }//GEN-LAST:event_jPanel1MouseReleased
 
