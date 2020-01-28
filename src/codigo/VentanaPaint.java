@@ -46,6 +46,7 @@ public class VentanaPaint extends javax.swing.JFrame {
     public VentanaPaint() {
         initComponents();
         inicializaBuffers();
+        jDialog2.setSize(640,450);
 
     }
 
@@ -86,10 +87,57 @@ public class VentanaPaint extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog2 = new javax.swing.JDialog();
+        jColorChooser1 = new javax.swing.JColorChooser();
+        aceptarColor = new javax.swing.JButton();
+        cancelarColor = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         panelColores = new codigo.panelColores();
         ventanaHerramientas1 = new codigo.VentanaHerramientas();
         jLabelCoordenadas = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+
+        aceptarColor.setText("Aceptar");
+        aceptarColor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarColorActionPerformed(evt);
+            }
+        });
+
+        cancelarColor.setText("Cancelar");
+        cancelarColor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarColorActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialog2Layout = new javax.swing.GroupLayout(jDialog2.getContentPane());
+        jDialog2.getContentPane().setLayout(jDialog2Layout);
+        jDialog2Layout.setHorizontalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog2Layout.createSequentialGroup()
+                .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialog2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jColorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDialog2Layout.createSequentialGroup()
+                        .addGap(163, 163, 163)
+                        .addComponent(aceptarColor)
+                        .addGap(118, 118, 118)
+                        .addComponent(cancelarColor)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jDialog2Layout.setVerticalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog2Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jColorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(aceptarColor)
+                    .addComponent(cancelarColor))
+                .addGap(23, 23, 23))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,6 +170,13 @@ public class VentanaPaint extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -139,6 +194,8 @@ public class VentanaPaint extends javax.swing.JFrame {
                         .addComponent(panelColores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(94, 94, 94)
                         .addComponent(jLabelCoordenadas, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(87, 87, 87)
+                        .addComponent(jButton1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -153,12 +210,18 @@ public class VentanaPaint extends javax.swing.JFrame {
                         .addComponent(ventanaHerramientas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(panelColores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(jLabelCoordenadas, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(panelColores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(75, 75, 75)
+                                .addComponent(jLabelCoordenadas, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addGap(38, 38, 38))))
         );
 
         pack();
@@ -284,6 +347,18 @@ public class VentanaPaint extends javax.swing.JFrame {
         jLabelCoordenadas.setText(evt.getX() + " , " + evt.getY());
     }//GEN-LAST:event_jPanel1MouseMoved
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jDialog2.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void aceptarColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarColorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_aceptarColorActionPerformed
+
+    private void cancelarColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarColorActionPerformed
+        jDialog2.setVisible(false);
+    }//GEN-LAST:event_cancelarColorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -320,6 +395,11 @@ public class VentanaPaint extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton aceptarColor;
+    private javax.swing.JButton cancelarColor;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JColorChooser jColorChooser1;
+    private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabelCoordenadas;
     private javax.swing.JPanel jPanel1;
     private codigo.panelColores panelColores;
