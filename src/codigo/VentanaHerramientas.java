@@ -41,6 +41,7 @@ public class VentanaHerramientas extends javax.swing.JPanel {
         botonGomaFina = new javax.swing.JButton();
         jSlider1 = new javax.swing.JSlider();
         botonTiraLineas = new javax.swing.JButton();
+        botonSpray = new javax.swing.JButton();
 
         botonCuadrado.setText("Cuadrado");
         botonCuadrado.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +115,13 @@ public class VentanaHerramientas extends javax.swing.JPanel {
             }
         });
 
+        botonSpray.setText("Spray");
+        botonSpray.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSprayActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -130,10 +138,11 @@ public class VentanaHerramientas extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(checkRelleno)
-                            .addComponent(botonCuadrado)
                             .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(botonTiraLineas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(botonTiraLineas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonSpray, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonCuadrado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -157,7 +166,9 @@ public class VentanaHerramientas extends javax.swing.JPanel {
                 .addComponent(botonGomaFina)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botonTiraLineas)
-                .addGap(158, 158, 158)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonSpray)
+                .addGap(119, 119, 119)
                 .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -199,12 +210,15 @@ public class VentanaHerramientas extends javax.swing.JPanel {
 
     private void jSlider1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider1MouseReleased
         grosorLinea = jSlider1.getValue();
-        System.out.println(grosorLinea);
     }//GEN-LAST:event_jSlider1MouseReleased
 
     private void botonTiraLineasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTiraLineasActionPerformed
         formaElegida = 0;
     }//GEN-LAST:event_botonTiraLineasActionPerformed
+
+    private void botonSprayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSprayActionPerformed
+        formaElegida = 12;
+    }//GEN-LAST:event_botonSprayActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -214,6 +228,7 @@ public class VentanaHerramientas extends javax.swing.JPanel {
     private javax.swing.JButton botonGomaFina;
     private javax.swing.JButton botonPentagono;
     private javax.swing.JButton botonPincel;
+    private javax.swing.JButton botonSpray;
     private javax.swing.JButton botonTiraLineas;
     private javax.swing.JButton botonTriangulo;
     private javax.swing.JCheckBox checkRelleno;

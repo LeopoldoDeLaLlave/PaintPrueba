@@ -12,6 +12,7 @@ import codigo.formas.Forma;
 import java.awt.BasicStroke;
 import codigo.formas.Pentagono;
 import codigo.formas.Pincel;
+import codigo.formas.Spray;
 import codigo.formas.TiraLineas;
 import codigo.formas.Triangulo;
 import java.awt.Color;
@@ -33,10 +34,11 @@ public class VentanaPaint extends javax.swing.JFrame {
 
     //Aqui guardamos x e y para hacer líneas
     int xLinea, yLinea;
-    
+
     Forma miForma = null;
     Pincel miPincel = null;
     TiraLineas miTiraLineas = null;
+    Spray miSpray = null;
 
     /**
      * Creates new form VentanaPaint
@@ -44,7 +46,7 @@ public class VentanaPaint extends javax.swing.JFrame {
     public VentanaPaint() {
         initComponents();
         inicializaBuffers();
-        
+
     }
 
     //Enlaza buffergraphics con jpanel
@@ -58,15 +60,15 @@ public class VentanaPaint extends javax.swing.JFrame {
         //Inicializo el buffer para que se pinte de blanco entero, sirve para borrar todo
         bufferGraphics.setColor(Color.white);
         bufferGraphics.fillRect(0, 0, jPanel1.getWidth(), jPanel1.getHeight());
-        
+
         bufferGraphics2.setColor(Color.white);
         bufferGraphics2.fillRect(0, 0, jPanel1.getWidth(), jPanel1.getHeight());
 
         //Enlazamos el jPanel1 con el jPanelGraphics
         jPanelGraphics = (Graphics2D) jPanel1.getGraphics();
-        
+
     }
-    
+
     @Override
     public void paint(Graphics g) {
         super.paint(g);
@@ -168,10 +170,9 @@ public class VentanaPaint extends javax.swing.JFrame {
         //Para que aparezcan las coordenadas mientras se usan herramientas
         //Provoca un parpadeo extraño
         //jLabelCoordenadas.setText(evt.getX() + " , " + evt.getY());
-        
         //Esto es lo que se dibuja sobre la pantalla
         bufferGraphics.drawImage(buffer2, 0, 0, null);
-        
+
         switch (ventanaHerramientas1.formaElegida) {
 
             //HAce una lina de un punto a otro
@@ -196,16 +197,22 @@ public class VentanaPaint extends javax.swing.JFrame {
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
                 break;
 
-            //Hace línes finas
+            //Hace línes  
             case 11:
                 miPincel.dibujate(bufferGraphics2, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
+                break;
+
+            //Efecto spray
+            case 12:
+                miSpray = new Spray(evt.getX(), evt.getY(), panelColores.colorSeleccionado);
+                miSpray.dibujate(bufferGraphics2, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
                 break;
 
             //Hace la estrella
             case 256:
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
                 break;
-            
+
         }
         //Refresca la pantalla y pone lo pintado
         repaint(0, 0, 1, 1);
@@ -213,7 +220,7 @@ public class VentanaPaint extends javax.swing.JFrame {
 
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
         switch (ventanaHerramientas1.formaElegida) {
-            
+
             case 0:
                 miTiraLineas = new TiraLineas(evt.getX(), evt.getY(), panelColores.colorSeleccionado);
                 miTiraLineas.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
@@ -222,33 +229,39 @@ public class VentanaPaint extends javax.swing.JFrame {
                 miForma = new Triangulo(evt.getX(), evt.getY(), 4, panelColores.colorSeleccionado, ventanaHerramientas1.relleno);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
                 break;
-            
+
             case 4:
                 miForma = new Cuadrado(evt.getX(), evt.getY(), 4, panelColores.colorSeleccionado, ventanaHerramientas1.relleno);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
                 break;
-            
+
             case 5:
                 miForma = new Pentagono(evt.getX(), evt.getY(), 5, panelColores.colorSeleccionado, ventanaHerramientas1.relleno);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
                 break;
-            
+
             case 1:
                 miForma = new Circulo2(evt.getX(), evt.getY(), 100, panelColores.colorSeleccionado, ventanaHerramientas1.relleno);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
                 break;
-            
-                //Este caso sirve de pincel y de goma
+
+            //Este caso sirve de pincel y de goma
             case 11:
                 if (ventanaHerramientas1.goma) {
                     miPincel = new Pincel(evt.getX(), evt.getY(), panelColores.colorSeleccionadoGoma);
                 } else {
                     miPincel = new Pincel(evt.getX(), evt.getY(), panelColores.colorSeleccionado);
                 }
-                
+
                 miPincel.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
                 break;
-            
+
+            case 12:
+
+                miSpray = new Spray(evt.getX(), evt.getY(), panelColores.colorSeleccionado);
+                miSpray.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
+                break;
+
             case 256:
                 miForma = new Estrella(evt.getX(), evt.getY(), panelColores.colorSeleccionado, ventanaHerramientas1.relleno);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
@@ -257,10 +270,10 @@ public class VentanaPaint extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MousePressed
 
     private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
-        
+
         if ((ventanaHerramientas1.formaElegida > 0 && ventanaHerramientas1.formaElegida <= 5) || ventanaHerramientas1.formaElegida == 256) {//Para que no dé error cuando no pintemos formas
             miForma.dibujate(bufferGraphics2, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
-        }else if(ventanaHerramientas1.formaElegida == 0){
+        } else if (ventanaHerramientas1.formaElegida == 0) {
             miTiraLineas.dibujate(bufferGraphics2, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
         }
     }//GEN-LAST:event_jPanel1MouseReleased
