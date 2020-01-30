@@ -264,6 +264,8 @@ public class VentanaHerramientas extends javax.swing.JPanel {
     private void botonTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTextoActionPerformed
         formaElegida = 16;
         
+        //VentanaPaint.jDialogText.setVisible(true);
+        
     }//GEN-LAST:event_botonTextoActionPerformed
 
 

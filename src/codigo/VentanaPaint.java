@@ -13,6 +13,7 @@ import codigo.formas.Pentagono;
 import codigo.formas.Pincel;
 import codigo.formas.RectanguloLibre;
 import codigo.formas.Spray;
+import codigo.formas.Texto;
 import codigo.formas.TiraLineas;
 import codigo.formas.Triangulo;
 import java.awt.Color;
@@ -45,6 +46,13 @@ public class VentanaPaint extends javax.swing.JFrame {
     TiraLineas miTiraLineas = null;
     Spray miSpray = null;
     RectanguloLibre miRectanguloLibre = null;
+    Texto miTexto = null;
+    //Aquí guardaremos el texto para poner en pantalla
+    String texto = "";
+    
+    int tamanoFuente = 16; //La fuente será 16 por defecto
+    
+    String fuente = "Andale Mono"; //La fuente, por defecto será Andale Mono
    
 
     /**
@@ -53,7 +61,7 @@ public class VentanaPaint extends javax.swing.JFrame {
     public VentanaPaint() {
         initComponents();
         inicializaBuffers();
-        jDialog2.setSize(640, 450);
+        jDialogColor.setSize(640, 450);
 
     }
 
@@ -94,17 +102,28 @@ public class VentanaPaint extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialog2 = new javax.swing.JDialog();
+        jDialogColor = new javax.swing.JDialog();
         jColorChooser1 = new javax.swing.JColorChooser();
         aceptarColor = new javax.swing.JButton();
         cancelarColor = new javax.swing.JButton();
-        jDialog1 = new javax.swing.JDialog();
+        jDialogGuardar = new javax.swing.JDialog();
         jFileChooser1 = new javax.swing.JFileChooser();
+        jDialogText = new javax.swing.JDialog();
+        jLabel1 = new javax.swing.JLabel();
+        jTextFieldTextoIntroducido = new javax.swing.JTextField();
+        jButtonEnviarTexto = new javax.swing.JButton();
+        jButtonCancelarTexto = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jSlider1 = new javax.swing.JSlider();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
         jPanel1 = new javax.swing.JPanel();
         panelColores = new codigo.panelColores();
         ventanaHerramientas1 = new codigo.VentanaHerramientas();
         jLabelCoordenadas = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        texto2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -125,45 +144,138 @@ public class VentanaPaint extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jDialog2Layout = new javax.swing.GroupLayout(jDialog2.getContentPane());
-        jDialog2.getContentPane().setLayout(jDialog2Layout);
-        jDialog2Layout.setHorizontalGroup(
-            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog2Layout.createSequentialGroup()
-                .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialog2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jDialogColorLayout = new javax.swing.GroupLayout(jDialogColor.getContentPane());
+        jDialogColor.getContentPane().setLayout(jDialogColorLayout);
+        jDialogColorLayout.setHorizontalGroup(
+            jDialogColorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogColorLayout.createSequentialGroup()
+                .addGroup(jDialogColorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogColorLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jColorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDialog2Layout.createSequentialGroup()
+                    .addGroup(jDialogColorLayout.createSequentialGroup()
                         .addGap(163, 163, 163)
                         .addComponent(aceptarColor)
                         .addGap(118, 118, 118)
                         .addComponent(cancelarColor)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jDialog2Layout.setVerticalGroup(
-            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog2Layout.createSequentialGroup()
+        jDialogColorLayout.setVerticalGroup(
+            jDialogColorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogColorLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jColorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jDialogColorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(aceptarColor)
                     .addComponent(cancelarColor))
                 .addGap(23, 23, 23))
         );
 
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jDialogGuardarLayout = new javax.swing.GroupLayout(jDialogGuardar.getContentPane());
+        jDialogGuardar.getContentPane().setLayout(jDialogGuardarLayout);
+        jDialogGuardarLayout.setHorizontalGroup(
+            jDialogGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jFileChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 934, Short.MAX_VALUE)
         );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
+        jDialogGuardarLayout.setVerticalGroup(
+            jDialogGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogGuardarLayout.createSequentialGroup()
                 .addComponent(jFileChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 154, Short.MAX_VALUE))
+        );
+
+        jDialogText.setSize(600, 220);
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setText("Texto:");
+
+        jButtonEnviarTexto.setText("Aceptar");
+        jButtonEnviarTexto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEnviarTextoActionPerformed(evt);
+            }
+        });
+
+        jButtonCancelarTexto.setText("Cancelar");
+        jButtonCancelarTexto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarTextoActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Tamaño Fuente");
+
+        jSlider1.setMinimum(5);
+        jSlider1.setValue(16);
+
+        jLabel3.setText("Fuente");
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Serif", "Andale Mono", "Cochin", "Futura", "Herculanum" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
+
+        javax.swing.GroupLayout jDialogTextLayout = new javax.swing.GroupLayout(jDialogText.getContentPane());
+        jDialogText.getContentPane().setLayout(jDialogTextLayout);
+        jDialogTextLayout.setHorizontalGroup(
+            jDialogTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogTextLayout.createSequentialGroup()
+                .addGroup(jDialogTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDialogTextLayout.createSequentialGroup()
+                        .addGroup(jDialogTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogTextLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jButtonEnviarTexto)
+                                .addGap(24, 24, 24))
+                            .addGroup(jDialogTextLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jDialogTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jDialogTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jDialogTextLayout.createSequentialGroup()
+                                .addGroup(jDialogTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jDialogTextLayout.createSequentialGroup()
+                                        .addGap(21, 21, 21)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogTextLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonCancelarTexto))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDialogTextLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldTextoIntroducido, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 18, Short.MAX_VALUE))
+        );
+        jDialogTextLayout.setVerticalGroup(
+            jDialogTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogTextLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jDialogTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldTextoIntroducido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDialogTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jDialogTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jDialogTextLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel3))
+                    .addGroup(jDialogTextLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDialogTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonEnviarTexto)
+                    .addComponent(jButtonCancelarTexto))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -204,6 +316,13 @@ public class VentanaPaint extends javax.swing.JFrame {
             }
         });
 
+        texto2.setText("Texto2");
+        texto2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                texto2ActionPerformed(evt);
+            }
+        });
+
         jMenu1.setText("File");
 
         jMenuItem1.setText("Guardar");
@@ -238,8 +357,13 @@ public class VentanaPaint extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 14, Short.MAX_VALUE)
-                        .addComponent(ventanaHerramientas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ventanaHerramientas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(texto2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(46, 46, 46)))
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39))
                     .addGroup(layout.createSequentialGroup()
@@ -253,12 +377,14 @@ public class VentanaPaint extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
+                        .addGap(35, 35, 35)
+                        .addComponent(texto2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(ventanaHerramientas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -322,7 +448,7 @@ public class VentanaPaint extends javax.swing.JFrame {
             case 15:
                 miRectanguloLibre.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea, ventanaHerramientas1.relleno);
                 break;
-
+                
             //Hace la estrella
             case 256:
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
@@ -388,8 +514,12 @@ public class VentanaPaint extends javax.swing.JFrame {
                 miRectanguloLibre.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea,ventanaHerramientas1.relleno);
                 break;
                 
+            //Escribir
             case 16:
-                bufferGraphics2.drawString("Hola", 20, 20);
+                miTexto= new Texto(evt.getX(), evt.getY(), panelColores.colorSeleccionado);
+                miTexto.escribete(bufferGraphics2, texto, tamanoFuente, fuente);
+                //Volvemos a dejar el string vacio;
+                texto="";
                 break;
                 
 
@@ -418,17 +548,17 @@ public class VentanaPaint extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MouseMoved
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        jDialog2.setVisible(true);
+        jDialogColor.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void aceptarColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarColorActionPerformed
-        jDialog2.setVisible(false);
+        jDialogColor.setVisible(false);
         panelColores.colorSeleccionado = jColorChooser1.getColor();
         panelColores.labelColorSeleccionado.setBackground(jColorChooser1.getColor());
     }//GEN-LAST:event_aceptarColorActionPerformed
 
     private void cancelarColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarColorActionPerformed
-        jDialog2.setVisible(false);
+        jDialogColor.setVisible(false);
     }//GEN-LAST:event_cancelarColorActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -470,6 +600,25 @@ public class VentanaPaint extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    //Este boón recoge el texto y la fuente para poner en pantalla.
+    private void jButtonEnviarTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnviarTextoActionPerformed
+        texto = jTextFieldTextoIntroducido.getText();
+        tamanoFuente = jSlider1.getValue();
+        fuente = jList1.getSelectedValue();
+        jDialogText.setVisible(false);
+        
+    }//GEN-LAST:event_jButtonEnviarTextoActionPerformed
+    
+    private void jButtonCancelarTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarTextoActionPerformed
+        jDialogText.setVisible(false);
+    }//GEN-LAST:event_jButtonCancelarTextoActionPerformed
+    
+    
+    private void texto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texto2ActionPerformed
+        jDialogText.setVisible(true);
+        ventanaHerramientas1.formaElegida=16;
+    }//GEN-LAST:event_texto2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -509,18 +658,29 @@ public class VentanaPaint extends javax.swing.JFrame {
     private javax.swing.JButton aceptarColor;
     private javax.swing.JButton cancelarColor;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonCancelarTexto;
+    private javax.swing.JButton jButtonEnviarTexto;
     private javax.swing.JColorChooser jColorChooser1;
-    private javax.swing.JDialog jDialog1;
-    private javax.swing.JDialog jDialog2;
+    private javax.swing.JDialog jDialogColor;
+    private javax.swing.JDialog jDialogGuardar;
+    public javax.swing.JDialog jDialogText;
     private javax.swing.JFileChooser jFileChooser1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelCoordenadas;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSlider jSlider1;
+    private javax.swing.JTextField jTextFieldTextoIntroducido;
     private codigo.panelColores panelColores;
+    private javax.swing.JButton texto2;
     private codigo.VentanaHerramientas ventanaHerramientas1;
     // End of variables declaration//GEN-END:variables
 

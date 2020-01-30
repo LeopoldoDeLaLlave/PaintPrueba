@@ -54,6 +54,6 @@ public class RectanguloLibre extends Polygon {
                 g2.drawRect(posX, posY, (x - posX), (y - posY));
             }
         }
-
+        
     }
 }
