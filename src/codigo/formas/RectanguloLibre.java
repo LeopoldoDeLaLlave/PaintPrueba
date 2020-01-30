@@ -17,28 +17,43 @@ import java.awt.Polygon;
  * @author Javier
  */
 public class RectanguloLibre extends Polygon {
+
     //Nos indican los puntos desde los que parten las líneas
     public int x, y;
     //Color del que se pintará la línea
     public Color color;
-    
-    public RectanguloLibre(int posX, int posY, Color _color ) {
+
+    public RectanguloLibre(int posX, int posY, Color _color) {
         x = posX;
         y = posY;
         color = _color;
     }
-    
-    public void dibujate(Graphics2D g2, int posX, int posY ,int grosor) {
+
+    public void dibujate(Graphics2D g2, int posX, int posY, int grosor, boolean _relleno) {
         g2.setColor(color);
         g2.setStroke(new BasicStroke(grosor));
-        //Pinto la línea superior
-        g2.drawLine( x, y, posX, y);
-        //Pinto la línea inferior
-        g2.drawLine( x, posY, posX, posY);
-        //Pinto la línea lateral
-        g2.drawLine( x, y, x, posY);
-       
-        g2.drawLine( posX, y, posX, posY);    
-        
+
+        if (_relleno) {
+            if (posX > x && posY > y) {
+                g2.fillRect(x, y, (posX - x), (posY - y));
+            } else if (posX < x && posY > y) {
+                g2.fillRect(posX, y, (x - posX), (posY - y));
+            } else if (posX > x && posY < y) {
+                g2.fillRect(x, posY, (posX - x), (y - posY));
+            } else {
+                g2.fillRect(posX, posY, (x - posX), (y - posY));
+            }
+        } else {
+            if (posX > x && posY > y) {
+                g2.drawRect(x, y, (posX - x), (posY - y));
+            } else if (posX < x && posY > y) {
+                g2.drawRect(posX, y, (x - posX), (posY - y));
+            } else if (posX > x && posY < y) {
+                g2.drawRect(x, posY, (posX - x), (y - posY));
+            } else {
+                g2.drawRect(posX, posY, (x - posX), (y - posY));
+            }
+        }
+
     }
 }

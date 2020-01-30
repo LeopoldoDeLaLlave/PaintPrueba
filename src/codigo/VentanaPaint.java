@@ -11,6 +11,7 @@ import codigo.formas.Estrella;
 import codigo.formas.Forma;
 import codigo.formas.Pentagono;
 import codigo.formas.Pincel;
+import codigo.formas.RectanguloLibre;
 import codigo.formas.Spray;
 import codigo.formas.TiraLineas;
 import codigo.formas.Triangulo;
@@ -43,6 +44,8 @@ public class VentanaPaint extends javax.swing.JFrame {
     Pincel miPincel = null;
     TiraLineas miTiraLineas = null;
     Spray miSpray = null;
+    RectanguloLibre miRectanguloLibre = null;
+   
 
     /**
      * Creates new form VentanaPaint
@@ -316,6 +319,9 @@ public class VentanaPaint extends javax.swing.JFrame {
                 miSpray = new Spray(evt.getX(), evt.getY(), panelColores.colorSeleccionado);
                 miSpray.dibujate(bufferGraphics2, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
                 break;
+            case 15:
+                miRectanguloLibre.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea, ventanaHerramientas1.relleno);
+                break;
 
             //Hace la estrella
             case 256:
@@ -371,11 +377,21 @@ public class VentanaPaint extends javax.swing.JFrame {
                 miSpray.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
                 break;
 
+            //Pipeta
             case 14:
                 Color c = new Color(buffer2.getRGB(evt.getX(), evt.getY()), true);
                 panelColores.colorSeleccionado = c;
                 panelColores.labelColorSeleccionado.setBackground(c);
                 break;
+            case 15:
+                miRectanguloLibre = new RectanguloLibre(evt.getX(), evt.getY(), panelColores.colorSeleccionado);
+                miRectanguloLibre.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea,ventanaHerramientas1.relleno);
+                break;
+                
+            case 16:
+                bufferGraphics2.drawString("Hola", 20, 20);
+                break;
+                
 
             case 256:
                 miForma = new Estrella(evt.getX(), evt.getY(), panelColores.colorSeleccionado, ventanaHerramientas1.relleno);
@@ -390,6 +406,8 @@ public class VentanaPaint extends javax.swing.JFrame {
             miForma.dibujate(bufferGraphics2, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
         } else if (ventanaHerramientas1.formaElegida == 0) {
             miTiraLineas.dibujate(bufferGraphics2, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
+        }else if(ventanaHerramientas1.formaElegida == 15){
+            miRectanguloLibre.dibujate(bufferGraphics2, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea, ventanaHerramientas1.relleno);
         }
     }//GEN-LAST:event_jPanel1MouseReleased
 

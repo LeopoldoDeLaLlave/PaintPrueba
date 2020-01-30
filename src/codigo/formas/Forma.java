@@ -41,6 +41,7 @@ public class Forma extends Polygon{
         }else{
             g2.draw(this);
         }
+        
    }
     
     //Este método calcula la posición de los vértices en un polígono regular
