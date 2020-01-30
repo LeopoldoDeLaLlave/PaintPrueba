@@ -37,7 +37,6 @@
                   <Component id="botonCuadrado" alignment="0" max="32767" attributes="0"/>
                   <Component id="botonPipeta" alignment="0" max="32767" attributes="0"/>
                   <Component id="botonRectanguloLibre" alignment="0" max="32767" attributes="0"/>
-                  <Component id="botonTexto" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -70,9 +69,7 @@
               <Component id="botonPipeta" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="botonRectanguloLibre" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="botonTexto" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
               <Component id="jSlider1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -184,14 +181,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonRectanguloLibreActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="botonTexto">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Texto"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonTextoActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

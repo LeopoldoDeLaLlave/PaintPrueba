@@ -201,7 +201,7 @@ public class Texto extends Graphics{
     public void dispose() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    //Nos indican los puntos desde los que parte elm string
+    //Nos indican los puntos desde los que parte el string
     public int x, y;
     //Color del que se pintará el String
     public Color color;

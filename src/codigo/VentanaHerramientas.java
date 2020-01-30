@@ -44,7 +44,6 @@ public class VentanaHerramientas extends javax.swing.JPanel {
         botonSpray = new javax.swing.JButton();
         botonPipeta = new javax.swing.JButton();
         botonRectanguloLibre = new javax.swing.JButton();
-        botonTexto = new javax.swing.JButton();
 
         botonCuadrado.setText("Cuadrado");
         botonCuadrado.addActionListener(new java.awt.event.ActionListener() {
@@ -139,13 +138,6 @@ public class VentanaHerramientas extends javax.swing.JPanel {
             }
         });
 
-        botonTexto.setText("Texto");
-        botonTexto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonTextoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -168,8 +160,7 @@ public class VentanaHerramientas extends javax.swing.JPanel {
                     .addComponent(botonSpray, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botonCuadrado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botonPipeta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonRectanguloLibre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonTexto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(botonRectanguloLibre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -199,9 +190,7 @@ public class VentanaHerramientas extends javax.swing.JPanel {
                 .addComponent(botonPipeta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botonRectanguloLibre)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botonTexto)
-                .addGap(44, 44, 44)
+                .addGap(88, 88, 88)
                 .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -261,13 +250,6 @@ public class VentanaHerramientas extends javax.swing.JPanel {
         formaElegida = 15;
     }//GEN-LAST:event_botonRectanguloLibreActionPerformed
 
-    private void botonTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTextoActionPerformed
-        formaElegida = 16;
-        
-        //VentanaPaint.jDialogText.setVisible(true);
-        
-    }//GEN-LAST:event_botonTextoActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCirculo2;
@@ -279,7 +261,6 @@ public class VentanaHerramientas extends javax.swing.JPanel {
     private javax.swing.JButton botonPipeta;
     private javax.swing.JButton botonRectanguloLibre;
     private javax.swing.JButton botonSpray;
-    private javax.swing.JButton botonTexto;
     private javax.swing.JButton botonTiraLineas;
     private javax.swing.JButton botonTriangulo;
     private javax.swing.JCheckBox checkRelleno;

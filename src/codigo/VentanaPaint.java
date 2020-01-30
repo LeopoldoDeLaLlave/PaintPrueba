@@ -9,6 +9,7 @@ import codigo.formas.Circulo2;
 import codigo.formas.Cuadrado;
 import codigo.formas.Estrella;
 import codigo.formas.Forma;
+import codigo.formas.Limpiar;
 import codigo.formas.Pentagono;
 import codigo.formas.Pincel;
 import codigo.formas.RectanguloLibre;
@@ -47,13 +48,13 @@ public class VentanaPaint extends javax.swing.JFrame {
     Spray miSpray = null;
     RectanguloLibre miRectanguloLibre = null;
     Texto miTexto = null;
+    Limpiar miLimpiar = null;
     //Aquí guardaremos el texto para poner en pantalla
     String texto = "";
-    
+
     int tamanoFuente = 16; //La fuente será 16 por defecto
-    
+
     String fuente = "Andale Mono"; //La fuente, por defecto será Andale Mono
-   
 
     /**
      * Creates new form VentanaPaint
@@ -116,8 +117,7 @@ public class VentanaPaint extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jSlider1 = new javax.swing.JSlider();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        choice1 = new java.awt.Choice();
         jPanel1 = new javax.swing.JPanel();
         panelColores = new codigo.panelColores();
         ventanaHerramientas1 = new codigo.VentanaHerramientas();
@@ -128,6 +128,7 @@ public class VentanaPaint extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         aceptarColor.setText("Aceptar");
@@ -211,13 +212,6 @@ public class VentanaPaint extends javax.swing.JFrame {
 
         jLabel3.setText("Fuente");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Serif", "Andale Mono", "Cochin", "Futura", "Herculanum" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
-
         javax.swing.GroupLayout jDialogTextLayout = new javax.swing.GroupLayout(jDialogText.getContentPane());
         jDialogText.getContentPane().setLayout(jDialogTextLayout);
         jDialogTextLayout.setHorizontalGroup(
@@ -225,7 +219,7 @@ public class VentanaPaint extends javax.swing.JFrame {
             .addGroup(jDialogTextLayout.createSequentialGroup()
                 .addGroup(jDialogTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDialogTextLayout.createSequentialGroup()
-                        .addGroup(jDialogTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jDialogTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogTextLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jButtonEnviarTexto)
@@ -234,18 +228,14 @@ public class VentanaPaint extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jDialogTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(jDialogTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jDialogTextLayout.createSequentialGroup()
-                                .addGroup(jDialogTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jDialogTextLayout.createSequentialGroup()
-                                        .addGap(21, 21, 21)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogTextLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonCancelarTexto))))
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(choice1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jDialogTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCancelarTexto, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDialogTextLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1)
@@ -264,18 +254,15 @@ public class VentanaPaint extends javax.swing.JFrame {
                 .addGroup(jDialogTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jDialogTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jDialogTextLayout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jLabel3))
-                    .addGroup(jDialogTextLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)))
+                .addGap(9, 9, 9)
+                .addGroup(jDialogTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(choice1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDialogTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEnviarTexto)
                     .addComponent(jButtonCancelarTexto))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -341,6 +328,14 @@ public class VentanaPaint extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem2);
 
+        jMenuItem3.setText("Reiniciar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
@@ -354,25 +349,23 @@ public class VentanaPaint extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
+                .addComponent(panelColores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelCoordenadas, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(94, 94, 94))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 14, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(ventanaHerramientas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(texto2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46)))
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelColores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelCoordenadas, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(94, 94, 94))))
+                        .addComponent(ventanaHerramientas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(texto2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -382,7 +375,7 @@ public class VentanaPaint extends javax.swing.JFrame {
                         .addGap(33, 33, 33)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(texto2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(ventanaHerramientas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -448,7 +441,7 @@ public class VentanaPaint extends javax.swing.JFrame {
             case 15:
                 miRectanguloLibre.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea, ventanaHerramientas1.relleno);
                 break;
-                
+
             //Hace la estrella
             case 256:
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
@@ -511,18 +504,16 @@ public class VentanaPaint extends javax.swing.JFrame {
                 break;
             case 15:
                 miRectanguloLibre = new RectanguloLibre(evt.getX(), evt.getY(), panelColores.colorSeleccionado);
-                miRectanguloLibre.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea,ventanaHerramientas1.relleno);
+                miRectanguloLibre.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea, ventanaHerramientas1.relleno);
                 break;
-                
+
             //Escribir
             case 16:
-                miTexto= new Texto(evt.getX(), evt.getY(), panelColores.colorSeleccionado);
+                miTexto = new Texto(evt.getX(), evt.getY(), panelColores.colorSeleccionado);
                 miTexto.escribete(bufferGraphics2, texto, tamanoFuente, fuente);
                 //Volvemos a dejar el string vacio;
-                texto="";
+                texto = "";
                 break;
-                
-
             case 256:
                 miForma = new Estrella(evt.getX(), evt.getY(), panelColores.colorSeleccionado, ventanaHerramientas1.relleno);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
@@ -536,7 +527,7 @@ public class VentanaPaint extends javax.swing.JFrame {
             miForma.dibujate(bufferGraphics2, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
         } else if (ventanaHerramientas1.formaElegida == 0) {
             miTiraLineas.dibujate(bufferGraphics2, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
-        }else if(ventanaHerramientas1.formaElegida == 15){
+        } else if (ventanaHerramientas1.formaElegida == 15) {
             miRectanguloLibre.dibujate(bufferGraphics2, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea, ventanaHerramientas1.relleno);
         }
     }//GEN-LAST:event_jPanel1MouseReleased
@@ -604,20 +595,30 @@ public class VentanaPaint extends javax.swing.JFrame {
     private void jButtonEnviarTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnviarTextoActionPerformed
         texto = jTextFieldTextoIntroducido.getText();
         tamanoFuente = jSlider1.getValue();
-        fuente = jList1.getSelectedValue();
+        //fuente = jList1.getSelectedValue();
         jDialogText.setVisible(false);
-        
+        //repaint(0, 0, 1, 1);
+
     }//GEN-LAST:event_jButtonEnviarTextoActionPerformed
-    
+
     private void jButtonCancelarTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarTextoActionPerformed
         jDialogText.setVisible(false);
     }//GEN-LAST:event_jButtonCancelarTextoActionPerformed
-    
-    
+
+
     private void texto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texto2ActionPerformed
         jDialogText.setVisible(true);
-        ventanaHerramientas1.formaElegida=16;
+        ventanaHerramientas1.formaElegida = 16;
     }//GEN-LAST:event_texto2ActionPerformed
+
+    //Botón para dejar pantalla blanca
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        
+        miLimpiar = new Limpiar();
+        miLimpiar.dibujate(bufferGraphics2, jPanel1);
+        bufferGraphics.drawImage(buffer2, 0, 0, null);
+        repaint(0, 0, 1, 1);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -657,6 +658,7 @@ public class VentanaPaint extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptarColor;
     private javax.swing.JButton cancelarColor;
+    private java.awt.Choice choice1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonCancelarTexto;
     private javax.swing.JButton jButtonEnviarTexto;
@@ -669,14 +671,13 @@ public class VentanaPaint extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelCoordenadas;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JTextField jTextFieldTextoIntroducido;
     private codigo.panelColores panelColores;
