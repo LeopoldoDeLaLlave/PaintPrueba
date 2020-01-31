@@ -84,7 +84,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorGrisOscuro.setBackground(new java.awt.Color(102, 102, 102));
+        colorGrisOscuro.setBackground(new java.awt.Color(51, 51, 0));
         colorGrisOscuro.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorGrisOscuro.setOpaque(true);
         colorGrisOscuro.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -93,7 +93,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorGrisClaro.setBackground(new java.awt.Color(204, 204, 204));
+        colorGrisClaro.setBackground(new java.awt.Color(204, 204, 0));
         colorGrisClaro.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorGrisClaro.setOpaque(true);
         colorGrisClaro.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -111,7 +111,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorAmarillo.setBackground(new java.awt.Color(255, 255, 0));
+        colorAmarillo.setBackground(new java.awt.Color(255, 255, 102));
         colorAmarillo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorAmarillo.setOpaque(true);
         colorAmarillo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -120,7 +120,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorGranate.setBackground(new java.awt.Color(153, 0, 51));
+        colorGranate.setBackground(new java.awt.Color(102, 51, 0));
         colorGranate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorGranate.setOpaque(true);
         colorGranate.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -129,7 +129,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorRojo.setBackground(new java.awt.Color(255, 0, 51));
+        colorRojo.setBackground(new java.awt.Color(255, 255, 51));
         colorRojo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorRojo.setOpaque(true);
         colorRojo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -138,7 +138,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorVerdeAzulado.setBackground(new java.awt.Color(0, 102, 102));
+        colorVerdeAzulado.setBackground(new java.awt.Color(0, 153, 0));
         colorVerdeAzulado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorVerdeAzulado.setOpaque(true);
         colorVerdeAzulado.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -147,7 +147,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorAzulCielo.setBackground(new java.awt.Color(51, 204, 255));
+        colorAzulCielo.setBackground(new java.awt.Color(255, 153, 102));
         colorAzulCielo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorAzulCielo.setOpaque(true);
         colorAzulCielo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -156,7 +156,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorMorado.setBackground(new java.awt.Color(102, 0, 102));
+        colorMorado.setBackground(new java.awt.Color(0, 204, 153));
         colorMorado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorMorado.setOpaque(true);
         colorMorado.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -174,7 +174,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorLila.setBackground(new java.awt.Color(255, 102, 255));
+        colorLila.setBackground(new java.awt.Color(204, 51, 0));
         colorLila.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorLila.setOpaque(true);
         colorLila.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -183,7 +183,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorAzulMarino.setBackground(new java.awt.Color(0, 0, 102));
+        colorAzulMarino.setBackground(new java.awt.Color(0, 153, 153));
         colorAzulMarino.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorAzulMarino.setOpaque(true);
         colorAzulMarino.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -192,7 +192,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorAzulOscuro.setBackground(new java.awt.Color(51, 0, 153));
+        colorAzulOscuro.setBackground(new java.awt.Color(255, 102, 0));
         colorAzulOscuro.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorAzulOscuro.setOpaque(true);
         colorAzulOscuro.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -201,7 +201,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorVerdeClaro.setBackground(new java.awt.Color(0, 255, 0));
+        colorVerdeClaro.setBackground(new java.awt.Color(255, 204, 102));
         colorVerdeClaro.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorVerdeClaro.setOpaque(true);
         colorVerdeClaro.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -210,7 +210,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorNaranja.setBackground(new java.awt.Color(255, 102, 0));
+        colorNaranja.setBackground(new java.awt.Color(204, 0, 204));
         colorNaranja.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorNaranja.setOpaque(true);
         colorNaranja.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -219,7 +219,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorAzulSemioscuro.setBackground(new java.awt.Color(51, 0, 204));
+        colorAzulSemioscuro.setBackground(new java.awt.Color(102, 0, 153));
         colorAzulSemioscuro.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorAzulSemioscuro.setOpaque(true);
         colorAzulSemioscuro.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -228,7 +228,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorRojoApagado.setBackground(new java.awt.Color(255, 51, 51));
+        colorRojoApagado.setBackground(new java.awt.Color(255, 102, 255));
         colorRojoApagado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorRojoApagado.setOpaque(true);
         colorRojoApagado.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -237,7 +237,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorVerdeAzulOscuro.setBackground(new java.awt.Color(0, 0, 51));
+        colorVerdeAzulOscuro.setBackground(new java.awt.Color(0, 102, 204));
         colorVerdeAzulOscuro.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorVerdeAzulOscuro.setOpaque(true);
         colorVerdeAzulOscuro.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -246,7 +246,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorAzulPastel.setBackground(new java.awt.Color(153, 255, 255));
+        colorAzulPastel.setBackground(new java.awt.Color(255, 0, 102));
         colorAzulPastel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorAzulPastel.setOpaque(true);
         colorAzulPastel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -255,7 +255,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorVerdePistacho.setBackground(new java.awt.Color(153, 255, 153));
+        colorVerdePistacho.setBackground(new java.awt.Color(204, 0, 51));
         colorVerdePistacho.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorVerdePistacho.setOpaque(true);
         colorVerdePistacho.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -264,7 +264,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorVerdeMarron.setBackground(new java.awt.Color(102, 102, 0));
+        colorVerdeMarron.setBackground(new java.awt.Color(0, 204, 204));
         colorVerdeMarron.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorVerdeMarron.setOpaque(true);
         colorVerdeMarron.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -273,7 +273,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorAmarilloPalido.setBackground(new java.awt.Color(255, 255, 153));
+        colorAmarilloPalido.setBackground(new java.awt.Color(153, 0, 0));
         colorAmarilloPalido.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorAmarilloPalido.setOpaque(true);
         colorAmarilloPalido.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -282,7 +282,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorAzulOscuro2.setBackground(new java.awt.Color(51, 0, 153));
+        colorAzulOscuro2.setBackground(new java.awt.Color(0, 0, 102));
         colorAzulOscuro2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorAzulOscuro2.setOpaque(true);
         colorAzulOscuro2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -291,7 +291,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorVioleta.setBackground(new java.awt.Color(153, 0, 204));
+        colorVioleta.setBackground(new java.awt.Color(255, 0, 204));
         colorVioleta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorVioleta.setOpaque(true);
         colorVioleta.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -300,7 +300,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorMarron.setBackground(new java.awt.Color(134, 80, 35));
+        colorMarron.setBackground(new java.awt.Color(153, 0, 204));
         colorMarron.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorMarron.setOpaque(true);
         colorMarron.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -309,7 +309,7 @@ public class panelColores extends javax.swing.JPanel {
             }
         });
 
-        colorAzulSemiclaro.setBackground(new java.awt.Color(0, 102, 255));
+        colorAzulSemiclaro.setBackground(new java.awt.Color(51, 0, 153));
         colorAzulSemiclaro.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         colorAzulSemiclaro.setOpaque(true);
         colorAzulSemiclaro.addMouseListener(new java.awt.event.MouseAdapter() {

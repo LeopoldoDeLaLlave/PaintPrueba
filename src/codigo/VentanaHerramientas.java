@@ -5,6 +5,10 @@
  */
 package codigo;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
 /**
  *
  * @author Javier
@@ -12,14 +16,126 @@ package codigo;
 public class VentanaHerramientas extends javax.swing.JPanel {
 
     public boolean relleno = false;//Indica si la forma está rellena o no
-    public int formaElegida=11;//indica la herramienta que usaremos, por defecto está el lápiz
+    public int formaElegida = 11;//indica la herramienta que usaremos, por defecto está el lápiz
     boolean goma = false; //Nos indica si estamos usando la goma
     int grosorLinea = 1;
+
     /**
      * Creates new form VentanaHerramientas
      */
     public VentanaHerramientas() {
         initComponents();
+        poneIconos();
+    }
+    
+    //Invisibiliza el botónde detrás y pone el icono
+    public void afinaIcono(ImageIcon _miImagen, JButton _boton ){
+        _boton.setOpaque(false);
+        _boton.setContentAreaFilled(false);
+        _boton.setBorderPainted(false);
+        //Cargo la imagen en el jButton 
+        _boton.setIcon(_miImagen);
+    }
+    
+    //Pone los iconos
+    private void poneIconos() {
+        //Boton pincel
+        ImageIcon miImagen = new ImageIcon((new ImageIcon(getClass().getResource("/Imagenes/picel3.png"))
+                .getImage()
+                .getScaledInstance(53, 53, Image.SCALE_DEFAULT)));
+
+        afinaIcono(miImagen, botonPincel);
+
+        
+        //BotonGoma
+        ImageIcon miImagen2 = new ImageIcon((new ImageIcon(getClass().getResource("/Imagenes/goma6.png"))
+                .getImage()
+                .getScaledInstance(53, 53, Image.SCALE_DEFAULT)));
+
+        afinaIcono(miImagen2, botonGoma);
+        
+        
+        //BotonSpray
+        ImageIcon miImagen3 = new ImageIcon((new ImageIcon(getClass().getResource("/Imagenes/spray2.png"))
+                .getImage()
+                .getScaledInstance(53, 53, Image.SCALE_DEFAULT)));
+
+        afinaIcono(miImagen3, botonSpray);
+        
+        //BotonPluma
+        ImageIcon miImagen4 = new ImageIcon((new ImageIcon(getClass().getResource("/Imagenes/pluma2.png"))
+                .getImage()
+                .getScaledInstance(53, 53, Image.SCALE_DEFAULT)));
+
+        afinaIcono(miImagen4, botonPluma);
+        
+        //BotonPipeta
+        ImageIcon miImagen5 = new ImageIcon((new ImageIcon(getClass().getResource("/Imagenes/pipeta.png"))
+                .getImage()
+                .getScaledInstance(53, 53, Image.SCALE_DEFAULT)));
+
+        afinaIcono(miImagen5, botonPipeta);
+        
+        
+        //BotonCubo
+        ImageIcon miImagen6 = new ImageIcon((new ImageIcon(getClass().getResource("/Imagenes/cubo2.png"))
+                .getImage()
+                .getScaledInstance(53, 53, Image.SCALE_DEFAULT)));
+
+        afinaIcono(miImagen6, botonCubo);
+        
+        
+        //BotonTiraLineas
+        ImageIcon miImagen7 = new ImageIcon((new ImageIcon(getClass().getResource("/Imagenes/linea.png"))
+                .getImage()
+                .getScaledInstance(53, 53, Image.SCALE_DEFAULT)));
+
+        afinaIcono(miImagen7, botonTiraLineas);
+        
+        
+        //BotonRectanguloLibre
+        ImageIcon miImagen8 = new ImageIcon((new ImageIcon(getClass().getResource("/Imagenes/rectangulo_1.png"))
+                .getImage()
+                .getScaledInstance(53, 53, Image.SCALE_DEFAULT)));
+
+        afinaIcono(miImagen8, botonRectanguloLibre);
+        
+        
+        //Boton Triángulos
+        ImageIcon miImagen9 = new ImageIcon((new ImageIcon(getClass().getResource("/Imagenes/triangle.png"))
+                .getImage()
+                .getScaledInstance(53, 53, Image.SCALE_DEFAULT)));
+
+        afinaIcono(miImagen9, botonTriangulo);
+        
+        //Boton cuadrado
+        ImageIcon miImagen10 = new ImageIcon((new ImageIcon(getClass().getResource("/Imagenes/cuadrado.png"))
+                .getImage()
+                .getScaledInstance(53, 53, Image.SCALE_DEFAULT)));
+
+        afinaIcono(miImagen10, botonCuadrado);
+        
+        
+        //Boton pentágono
+        ImageIcon miImagen11 = new ImageIcon((new ImageIcon(getClass().getResource("/Imagenes/pentagon.png"))
+                .getImage()
+                .getScaledInstance(53, 53, Image.SCALE_DEFAULT)));
+
+        afinaIcono(miImagen11, botonPentagono);
+        
+        //Boton estrella
+        ImageIcon miImagen12 = new ImageIcon((new ImageIcon(getClass().getResource("/Imagenes/estrella.png"))
+                .getImage()
+                .getScaledInstance(53, 53, Image.SCALE_DEFAULT)));
+
+        afinaIcono(miImagen12, botonEstrella);
+        
+        //Boton circulo
+        ImageIcon miImagen13 = new ImageIcon((new ImageIcon(getClass().getResource("/Imagenes/circle.png"))
+                .getImage()
+                .getScaledInstance(53, 53, Image.SCALE_DEFAULT)));
+
+        afinaIcono(miImagen13, botonCirculo2);
     }
 
     /**
@@ -38,12 +154,16 @@ public class VentanaHerramientas extends javax.swing.JPanel {
         botonTriangulo = new javax.swing.JButton();
         checkRelleno = new javax.swing.JCheckBox();
         botonPincel = new javax.swing.JButton();
-        botonGomaFina = new javax.swing.JButton();
+        botonGoma = new javax.swing.JButton();
         jSlider1 = new javax.swing.JSlider();
         botonTiraLineas = new javax.swing.JButton();
         botonSpray = new javax.swing.JButton();
         botonPipeta = new javax.swing.JButton();
         botonRectanguloLibre = new javax.swing.JButton();
+        botonPluma = new javax.swing.JButton();
+        botonCubo = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(204, 204, 204));
 
         botonCuadrado.setText("Cuadrado");
         botonCuadrado.addActionListener(new java.awt.event.ActionListener() {
@@ -80,6 +200,7 @@ public class VentanaHerramientas extends javax.swing.JPanel {
             }
         });
 
+        checkRelleno.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
         checkRelleno.setText("Relleno");
         checkRelleno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,17 +208,17 @@ public class VentanaHerramientas extends javax.swing.JPanel {
             }
         });
 
-        botonPincel.setText("Pincel");
+        botonPincel.setText("pincel");
         botonPincel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonPincelActionPerformed(evt);
             }
         });
 
-        botonGomaFina.setText("Goma ");
-        botonGomaFina.addActionListener(new java.awt.event.ActionListener() {
+        botonGoma.setText("Goma ");
+        botonGoma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonGomaFinaActionPerformed(evt);
+                botonGomaActionPerformed(evt);
             }
         });
 
@@ -138,59 +259,88 @@ public class VentanaHerramientas extends javax.swing.JPanel {
             }
         });
 
+        botonPluma.setText("Pluma");
+        botonPluma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonPlumaActionPerformed(evt);
+            }
+        });
+
+        botonCubo.setText("Cubo");
+        botonCubo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCuboActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonPentagono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonEstrella, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonCirculo2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonTriangulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonPincel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonGomaFina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(checkRelleno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonCirculo2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(checkRelleno)
-                            .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(botonTiraLineas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonSpray, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonCuadrado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonPipeta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonRectanguloLibre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(botonSpray, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonPluma, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botonPincel, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonGoma, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botonPipeta, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonCubo, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botonTiraLineas, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonRectanguloLibre, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botonTriangulo, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonCuadrado, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botonPentagono, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botonEstrella, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonPincel, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonGoma, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonSpray, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonPluma, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonCubo, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonPipeta, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonTiraLineas, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonRectanguloLibre, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonTriangulo, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonCuadrado, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonPentagono, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonEstrella, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonCirculo2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(checkRelleno)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonCirculo2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonCuadrado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonPentagono)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonEstrella)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonTriangulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonPincel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botonGomaFina)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botonTiraLineas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botonSpray)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botonPipeta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botonRectanguloLibre)
-                .addGap(88, 88, 88)
                 .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -222,13 +372,13 @@ public class VentanaHerramientas extends javax.swing.JPanel {
 
     private void botonPincelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPincelActionPerformed
         formaElegida = 11;
-        goma=false;
+        goma = false;
     }//GEN-LAST:event_botonPincelActionPerformed
 
-    private void botonGomaFinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGomaFinaActionPerformed
+    private void botonGomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGomaActionPerformed
         formaElegida = 11;
-        goma=true;
-    }//GEN-LAST:event_botonGomaFinaActionPerformed
+        goma = true;
+    }//GEN-LAST:event_botonGomaActionPerformed
 
     private void jSlider1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider1MouseReleased
         grosorLinea = jSlider1.getValue();
@@ -250,15 +400,25 @@ public class VentanaHerramientas extends javax.swing.JPanel {
         formaElegida = 15;
     }//GEN-LAST:event_botonRectanguloLibreActionPerformed
 
+    private void botonPlumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPlumaActionPerformed
+        formaElegida = 17;
+    }//GEN-LAST:event_botonPlumaActionPerformed
+
+    private void botonCuboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCuboActionPerformed
+        formaElegida = 18;
+    }//GEN-LAST:event_botonCuboActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCirculo2;
     private javax.swing.JButton botonCuadrado;
+    private javax.swing.JButton botonCubo;
     private javax.swing.JButton botonEstrella;
-    private javax.swing.JButton botonGomaFina;
+    private javax.swing.JButton botonGoma;
     private javax.swing.JButton botonPentagono;
     private javax.swing.JButton botonPincel;
     private javax.swing.JButton botonPipeta;
+    private javax.swing.JButton botonPluma;
     private javax.swing.JButton botonRectanguloLibre;
     private javax.swing.JButton botonSpray;
     private javax.swing.JButton botonTiraLineas;

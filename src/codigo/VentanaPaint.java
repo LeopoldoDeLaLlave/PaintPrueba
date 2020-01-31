@@ -12,6 +12,7 @@ import codigo.formas.Forma;
 import codigo.formas.Limpiar;
 import codigo.formas.Pentagono;
 import codigo.formas.Pincel;
+import codigo.formas.Pluma;
 import codigo.formas.RectanguloLibre;
 import codigo.formas.Spray;
 import codigo.formas.Texto;
@@ -20,10 +21,12 @@ import codigo.formas.Triangulo;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -49,6 +52,8 @@ public class VentanaPaint extends javax.swing.JFrame {
     RectanguloLibre miRectanguloLibre = null;
     Texto miTexto = null;
     Limpiar miLimpiar = null;
+    Pluma miPluma = null;
+    VentanaHerramientas misHerramientas = null;
     //Aquí guardaremos el texto para poner en pantalla
     String texto = "";
 
@@ -63,9 +68,21 @@ public class VentanaPaint extends javax.swing.JFrame {
         initComponents();
         inicializaBuffers();
         jDialogColor.setSize(640, 450);
+        
+        //Ponemos icono a la paleta de colores
+        ImageIcon miImagen14 = new ImageIcon((new ImageIcon(getClass().getResource("/Imagenes/palette.png"))
+                .getImage()
+                .getScaledInstance(53, 53, Image.SCALE_DEFAULT)));
+
+        botonPaleta.setOpaque(false);
+        botonPaleta.setContentAreaFilled(false);
+        botonPaleta.setBorderPainted(false);
+        //Cargo la imagen en el jButton 
+        botonPaleta.setIcon(miImagen14);
 
     }
 
+    
     //Enlaza buffergraphics con jpanel
     private void inicializaBuffers() {
         //Creo una imagen del mismo ancho y alto que el Jpanel       
@@ -113,7 +130,7 @@ public class VentanaPaint extends javax.swing.JFrame {
         panelColores = new codigo.panelColores();
         ventanaHerramientas1 = new codigo.VentanaHerramientas();
         jLabelCoordenadas = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        botonPaleta = new javax.swing.JButton();
         botonescribir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextFieldtext = new javax.swing.JTextField();
@@ -122,7 +139,6 @@ public class VentanaPaint extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         aceptarColor.setText("Aceptar");
         aceptarColor.addActionListener(new java.awt.event.ActionListener() {
@@ -207,13 +223,12 @@ public class VentanaPaint extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 543, Short.MAX_VALUE)
         );
 
-        jButton1.setText("Elegir color");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonPaleta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonPaletaActionPerformed(evt);
             }
         });
 
@@ -226,7 +241,7 @@ public class VentanaPaint extends javax.swing.JFrame {
 
         jLabel1.setText("Texto:");
 
-        jMenu1.setText("File");
+        jMenu1.setText("Opciones");
 
         jMenuItem1.setText("Guardar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -254,9 +269,6 @@ public class VentanaPaint extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -269,7 +281,7 @@ public class VentanaPaint extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelColores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(botonPaleta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelCoordenadas, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(94, 94, 94))
@@ -289,30 +301,32 @@ public class VentanaPaint extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonescribir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextFieldtext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(79, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(panelColores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabelCoordenadas, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(24, 24, 24))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(botonPaleta)
+                                        .addGap(14, 14, 14))))))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(ventanaHerramientas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botonescribir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextFieldtext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(9, 9, 9)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(panelColores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelCoordenadas, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))
-                        .addGap(24, 24, 24))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         pack();
@@ -351,7 +365,7 @@ public class VentanaPaint extends javax.swing.JFrame {
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
                 break;
 
-            //Hace línes  
+            //Hace trazo libre 
             case 11:
                 miPincel.dibujate(bufferGraphics2, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
                 break;
@@ -363,6 +377,10 @@ public class VentanaPaint extends javax.swing.JFrame {
                 break;
             case 15:
                 miRectanguloLibre.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea, ventanaHerramientas1.relleno);
+                break;
+                
+            case 17:
+                miPluma.dibujate(bufferGraphics2, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
                 break;
 
             //Hace la estrella
@@ -438,6 +456,12 @@ public class VentanaPaint extends javax.swing.JFrame {
                 repaint(0, 0, 1, 1);
                 texto="";
                 break;
+                
+            case 17:
+
+                miPluma = new Pluma(evt.getX(), evt.getY(), panelColores.colorSeleccionado);
+                miPluma.dibujate(bufferGraphics2, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
+                break;
             case 256:
                 miForma = new Estrella(evt.getX(), evt.getY(), panelColores.colorSeleccionado, ventanaHerramientas1.relleno);
                 miForma.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
@@ -462,9 +486,9 @@ public class VentanaPaint extends javax.swing.JFrame {
         jLabelCoordenadas.setText(evt.getX() + " , " + evt.getY());
     }//GEN-LAST:event_jPanel1MouseMoved
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonPaletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPaletaActionPerformed
         jDialogColor.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonPaletaActionPerformed
 
     private void aceptarColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarColorActionPerformed
         jDialogColor.setVisible(false);
@@ -567,9 +591,9 @@ public class VentanaPaint extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptarColor;
+    private javax.swing.JButton botonPaleta;
     private javax.swing.JButton botonescribir;
     private javax.swing.JButton cancelarColor;
-    private javax.swing.JButton jButton1;
     private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JDialog jDialogColor;
     private javax.swing.JDialog jDialogGuardar;
@@ -577,7 +601,6 @@ public class VentanaPaint extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelCoordenadas;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
