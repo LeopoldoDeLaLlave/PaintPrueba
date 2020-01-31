@@ -163,7 +163,8 @@ public class VentanaHerramientas extends javax.swing.JPanel {
         botonPluma = new javax.swing.JButton();
         botonCubo = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(204, 204, 204));
+        setBackground(new java.awt.Color(255, 255, 255));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         botonCuadrado.setText("Cuadrado");
         botonCuadrado.addActionListener(new java.awt.event.ActionListener() {
