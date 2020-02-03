@@ -17,6 +17,7 @@ public class VentanaHerramientas extends javax.swing.JPanel {
 
     public boolean relleno = false;//Indica si la forma está rellena o no
     public int formaElegida = 11;//indica la herramienta que usaremos, por defecto está el lápiz
+    int aux = formaElegida;
     boolean goma = false; //Nos indica si estamos usando la goma
     int grosorLinea = 1;
 
@@ -349,18 +350,22 @@ public class VentanaHerramientas extends javax.swing.JPanel {
 
     private void botonCuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCuadradoActionPerformed
         formaElegida = 4;
+        aux = formaElegida;
     }//GEN-LAST:event_botonCuadradoActionPerformed
 
     private void botonPentagonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPentagonoActionPerformed
         formaElegida = 5;
+        aux = formaElegida;
     }//GEN-LAST:event_botonPentagonoActionPerformed
 
     private void botonEstrellaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEstrellaActionPerformed
         formaElegida = 256;
+        aux = formaElegida;
     }//GEN-LAST:event_botonEstrellaActionPerformed
 
     private void botonCirculo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCirculo2ActionPerformed
         formaElegida = 1;
+        aux = formaElegida;
     }//GEN-LAST:event_botonCirculo2ActionPerformed
 
     private void checkRellenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkRellenoActionPerformed
@@ -369,16 +374,19 @@ public class VentanaHerramientas extends javax.swing.JPanel {
 
     private void botonTrianguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTrianguloActionPerformed
         formaElegida = 3;
+        aux = formaElegida;
     }//GEN-LAST:event_botonTrianguloActionPerformed
 
     private void botonPincelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPincelActionPerformed
         formaElegida = 11;
         goma = false;
+        aux = formaElegida;
     }//GEN-LAST:event_botonPincelActionPerformed
 
     private void botonGomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGomaActionPerformed
         formaElegida = 11;
         goma = true;
+        aux = formaElegida;
     }//GEN-LAST:event_botonGomaActionPerformed
 
     private void jSlider1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider1MouseReleased
@@ -387,10 +395,12 @@ public class VentanaHerramientas extends javax.swing.JPanel {
 
     private void botonTiraLineasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTiraLineasActionPerformed
         formaElegida = 0;
+        aux = formaElegida;
     }//GEN-LAST:event_botonTiraLineasActionPerformed
 
     private void botonSprayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSprayActionPerformed
         formaElegida = 12;
+        aux = formaElegida;
     }//GEN-LAST:event_botonSprayActionPerformed
 
     private void botonPipetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPipetaActionPerformed
@@ -399,14 +409,17 @@ public class VentanaHerramientas extends javax.swing.JPanel {
 
     private void botonRectanguloLibreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRectanguloLibreActionPerformed
         formaElegida = 15;
+        aux = formaElegida;
     }//GEN-LAST:event_botonRectanguloLibreActionPerformed
 
     private void botonPlumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPlumaActionPerformed
         formaElegida = 17;
+        aux = formaElegida;
     }//GEN-LAST:event_botonPlumaActionPerformed
 
     private void botonCuboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCuboActionPerformed
         formaElegida = 18;
+        aux = formaElegida;
     }//GEN-LAST:event_botonCuboActionPerformed
 
 

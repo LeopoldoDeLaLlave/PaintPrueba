@@ -29,6 +29,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import  java.util.*;
 
 /**
  *
@@ -41,9 +42,10 @@ public class VentanaPaint extends javax.swing.JFrame {
 
     //Permite dibujar, una para el buufer y otra para el panel
     Graphics2D bufferGraphics, bufferGraphics2, jPanelGraphics = null;
-
-    //Aqui guardamos x e y para hacer líneas
-    int xLinea, yLinea;
+    
+    //Guardaremos los buffers cada vez que haya cambio
+    ArrayList<BufferedImage> bufferLista = new ArrayList<BufferedImage>();
+    ArrayList<BufferedImage> buffer2Lista = new ArrayList<BufferedImage>();
 
     Forma miForma = null;
     Pincel miPincel = null;
@@ -56,6 +58,9 @@ public class VentanaPaint extends javax.swing.JFrame {
     VentanaHerramientas misHerramientas = null;
     //Aquí guardaremos el texto para poner en pantalla
     String texto = "";
+    
+    //Este indice nos indica que buffer se muestra en pantalla
+    int indiceLista = 0;
 
     int tamanoFuente = 16; //La fuente será 16 por defecto
 
@@ -83,7 +88,7 @@ public class VentanaPaint extends javax.swing.JFrame {
         
         //Icono y titulo de mierda que se le ha ocurrido a Ramiro
         setTitle("Paint Star Wars");
-         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/sw.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/sw.png")).getImage());
 
     }
 
@@ -93,10 +98,15 @@ public class VentanaPaint extends javax.swing.JFrame {
         //Creo una imagen del mismo ancho y alto que el Jpanel       
         buffer = (BufferedImage) jPanel1.createImage(jPanel1.getWidth(), jPanel1.getHeight());
         buffer2 = (BufferedImage) jPanel1.createImage(jPanel1.getWidth(), jPanel1.getHeight());
-        //Creo una imagn moficable
+
+        //Añado el primer buffer a la lista
+        bufferLista.add(buffer);
+        buffer2Lista.add(buffer2);
+        //Creo una imagen modicable
         bufferGraphics = buffer.createGraphics();
         bufferGraphics2 = buffer2.createGraphics();
-        //Inicializo el buffer para que se pinte de blanco entero, sirve para borrar todo
+        
+        //Inicializo el buffer para que se pinte de blanco entero
         bufferGraphics.setColor(Color.white);
         bufferGraphics.fillRect(0, 0, jPanel1.getWidth(), jPanel1.getHeight());
 
@@ -144,6 +154,7 @@ public class VentanaPaint extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItemUndo = new javax.swing.JMenuItem();
 
         aceptarColor.setText("Aceptar");
         aceptarColor.addActionListener(new java.awt.event.ActionListener() {
@@ -272,6 +283,14 @@ public class VentanaPaint extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem3);
 
+        jMenuItemUndo.setText("Deshacer");
+        jMenuItemUndo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemUndoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemUndo);
+
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
@@ -340,9 +359,6 @@ public class VentanaPaint extends javax.swing.JFrame {
     //Este metodo actua cuando arrastras el raton habiendo pulsado y hasta que sueltas
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
 
-        //Para que aparezcan las coordenadas mientras se usan herramientas
-        //Provoca un parpadeo extraño
-        //jLabelCoordenadas.setText(evt.getX() + " , " + evt.getY());
         //Esto es lo que se dibuja sobre la pantalla
         bufferGraphics.drawImage(buffer2, 0, 0, null);
 
@@ -380,10 +396,13 @@ public class VentanaPaint extends javax.swing.JFrame {
                 miSpray = new Spray(evt.getX(), evt.getY(), panelColores.colorSeleccionado);
                 miSpray.dibujate(bufferGraphics2, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
                 break;
+             
+            //Dibuja un rectangulo libre
             case 15:
                 miRectanguloLibre.dibujate(bufferGraphics, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea, ventanaHerramientas1.relleno);
                 break;
-                
+             
+            //Efecto pluma
             case 17:
                 miPluma.dibujate(bufferGraphics2, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
                 break;
@@ -447,6 +466,7 @@ public class VentanaPaint extends javax.swing.JFrame {
                 Color c = new Color(buffer2.getRGB(evt.getX(), evt.getY()), true);
                 panelColores.colorSeleccionado = c;
                 panelColores.labelColorSeleccionado.setBackground(c);
+                ventanaHerramientas1.formaElegida = ventanaHerramientas1.aux;
                 break;
             case 15:
                 miRectanguloLibre = new RectanguloLibre(evt.getX(), evt.getY(), panelColores.colorSeleccionado);
@@ -482,6 +502,13 @@ public class VentanaPaint extends javax.swing.JFrame {
             miTiraLineas.dibujate(bufferGraphics2, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
         } else if (ventanaHerramientas1.formaElegida == 15) {
             miRectanguloLibre.dibujate(bufferGraphics2, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea, ventanaHerramientas1.relleno);
+        }
+        
+        //Siempre que no sea la pipeta, al soltar guardará un buffer en la lista
+        if(ventanaHerramientas1.formaElegida != 14){
+            bufferLista.add(buffer);
+            buffer2Lista.add(buffer2);
+            indiceLista++;
         }
     }//GEN-LAST:event_jPanel1MouseReleased
 
@@ -536,7 +563,7 @@ public class VentanaPaint extends javax.swing.JFrame {
                 try {
 
                     bufferGraphics.drawImage(ImageIO.read(fichero), 0, 0, null);
-                    bufferGraphics2.drawImage(ImageIO.read(fichero), 0, 0, null);
+                    //bufferGraphics2.drawImage(ImageIO.read(fichero), 0, 0, null);
                     repaint(0, 0, 1, 1);
                 } catch (IOException ex) {
                 }
@@ -557,7 +584,30 @@ public class VentanaPaint extends javax.swing.JFrame {
         miLimpiar.dibujate(bufferGraphics2, jPanel1);
         bufferGraphics.drawImage(buffer2, 0, 0, null);
         repaint(0, 0, 1, 1);
+        
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    //Botón deshacer, no funciona de momento
+    private void jMenuItemUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUndoActionPerformed
+        
+        //Si el indice es mayor que 0 retrocedemos una posición en la lista
+        if(indiceLista>0){
+            indiceLista--;
+        }
+        //Ponemos en pantalla el buffer anterior
+        /*buffer=bufferLista.get(indiceLista);   
+        buffer2=buffer2Lista.get(indiceLista);*/
+        miLimpiar = new Limpiar();
+        miLimpiar.dibujate(bufferGraphics2, jPanel1);
+        bufferGraphics.drawImage(buffer2, 0, 0, null);
+        repaint(0, 0, 1, 1);
+        bufferGraphics.drawImage(bufferLista.get(indiceLista), 0, 0, null);
+        bufferGraphics2.drawImage(buffer2Lista.get(indiceLista), 0, 0, null);
+        repaint(0, 0, 1, 1);
+        System.out.println(indiceLista);
+        System.out.println(bufferLista.size());
+
+    }//GEN-LAST:event_jMenuItemUndoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -610,6 +660,7 @@ public class VentanaPaint extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItemUndo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextFieldtext;
     private codigo.panelColores panelColores;
