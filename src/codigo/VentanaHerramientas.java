@@ -17,7 +17,7 @@ public class VentanaHerramientas extends javax.swing.JPanel {
 
     public boolean relleno = false;//Indica si la forma está rellena o no
     public int formaElegida = 11;//indica la herramienta que usaremos, por defecto está el lápiz
-    int aux = formaElegida;
+    int aux = formaElegida;//Guardaremos la herramienta para, tras usar la pipeta, volver a la herramienta
     boolean goma = false; //Nos indica si estamos usando la goma
     int grosorLinea = 1;
 
