@@ -45,7 +45,17 @@ public class VentanaPaint extends javax.swing.JFrame {
 
     //Guardaremos los buffers cada vez que haya cambio
     ArrayList<BufferedImage> bufferLista = new ArrayList<BufferedImage>();
-    ArrayList<BufferedImage> buffer2Lista = new ArrayList<BufferedImage>();
+    ArrayList<BufferedImage> buffer2Lista = new ArrayList<BufferedImage>();   
+    //Guardamos las coordenadas de las que tenemos que partir
+    ArrayList<int[]> listaPintar = new ArrayList<int[]>();
+    //Nos indica si el camino está libre
+    boolean libre = false;  
+    //El color que compararemos
+    Color colorProbar;  
+    //Array donde guardaremos coordenadas del punto en el que nos encontramos con el cubo
+    int posicion[];
+    
+    
 
     Forma miForma = null;
     Pincel miPincel = null;
@@ -89,6 +99,9 @@ public class VentanaPaint extends javax.swing.JFrame {
         //Icono y titulo de mierda que se le ha ocurrido a Ramiro
         setTitle("Paint Star Wars");
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/sw.png")).getImage());
+        
+        
+        posicion = new int[2];
 
     }
 
@@ -118,6 +131,7 @@ public class VentanaPaint extends javax.swing.JFrame {
         jPanelGraphics = (Graphics2D) jPanel1.getGraphics();
 
     }
+    
 
     @Override
     public void paint(Graphics g) {
@@ -520,6 +534,15 @@ public class VentanaPaint extends javax.swing.JFrame {
 
                 miPluma = new Pluma(evt.getX(), evt.getY(), panelColores.colorSeleccionado);
                 miPluma.dibujate(bufferGraphics2, evt.getX(), evt.getY(), ventanaHerramientas1.grosorLinea);
+                break;
+                
+            //Cubo 
+            case 18:
+                
+                do{
+                    
+                }while(listaPintar.size()>0);
+                
                 break;
             case 256:
                 miForma = new Estrella(evt.getX(), evt.getY(), panelColores.colorSeleccionado, ventanaHerramientas1.relleno);
